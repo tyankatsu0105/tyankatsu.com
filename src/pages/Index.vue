@@ -1,21 +1,28 @@
 <template>
-	<Layout>
-		<div class="Index">
-			<h1
-				class="Index_Heading"
-				data-text="Tyankatsu"
-			>
-				Tyankatsu
-			</h1>
-		</div>
-	</Layout>
+  <Layout>
+    <div class="Index">
+      <h1 class="Index_Heading" data-text="Tyankatsu">Tyankatsu</h1>
+    </div>
+  </Layout>
 </template>
 
 <script>
   import Layout from "~/layouts/Default.vue";
+  import * as Shared from "~/shared";
+
   export default {
     components: {
       Layout,
+    },
+
+    metaInfo() {
+      return Shared.Meta.meta({
+        title: Shared.Const.SITE_NAME,
+        url: `${process.env.GRIDSOME_APP_BASE_URL}`,
+        description: Shared.Const.DESCRIPTION,
+        type: "website",
+        image: `${process.env.GRIDSOME_APP_BASE_URL}/ogp.png`,
+      });
     },
   };
 </script>
