@@ -16,13 +16,16 @@
     },
 
     metaInfo() {
-      return Shared.Meta.meta({
-        title: Shared.Const.SITE_NAME,
-        url: `${process.env.GRIDSOME_APP_BASE_URL}`,
-        description: Shared.Const.DESCRIPTION,
-        type: "website",
-        image: `${process.env.GRIDSOME_APP_BASE_URL}/ogp.png`,
-      });
+      return {
+        ...Shared.Meta.meta({
+          title: Shared.Const.SITE_NAME,
+          url: `${process.env.GRIDSOME_APP_BASE_URL}`,
+          description: Shared.Const.DESCRIPTION,
+          type: "website",
+          image: `${process.env.GRIDSOME_APP_BASE_URL}/ogp.png`,
+        }),
+        titleTemplate: "%s",
+      };
     },
   };
 </script>
