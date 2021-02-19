@@ -1,0 +1,11 @@
+$color-primary: #272c35;
+$color-accent: #74f74b;
+
+$color-font: #cdd2d3;
+
+$color-black: #333;
+
+$color-posts-article: lighten($color-primary, 5%);
+
+$chromatic-aberration-color-main: rgb(236, 30, 255);
+$chromatic-aberration-color-sub: complement($chromatic-aberration-color-main);

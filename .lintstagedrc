@@ -1,0 +1,16 @@
+{
+  "*.scss": [
+    "prettier --write",
+    "stylelint --fix --cache --cache-location '.stylelintcache'"
+  ],
+  "*.js": [
+    "eslint --fix --cache --cache-location '.eslintcache'"
+  ],
+  "*.vue": [
+    "stylelint --fix --cache --cache-location '.stylelintcache'",
+    "eslint --fix --cache --cache-location '.eslintcache'"
+  ],
+  "*.md": [
+    "prettier --write"
+  ]
+}

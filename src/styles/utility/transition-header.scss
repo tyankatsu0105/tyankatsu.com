@@ -1,0 +1,5 @@
+@import "@/styles/utility/glitch.scss";
+.header-enter-active,
+.header-leave-active {
+  animation: glitch-background-2 $tst-default linear 0s;
+}

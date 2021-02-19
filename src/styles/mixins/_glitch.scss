@@ -1,0 +1,16 @@
+@mixin background-stripe(
+  $color1: transparent,
+  $color2: rgba(122, 122, 122, 0.9),
+  $border-width: 10px
+) {
+  background: repeating-linear-gradient(
+    $color1,
+    $color1 $border-width,
+    $color2 0,
+    $color2 $border-width * 2
+  );
+}
+
+@mixin chromatic-aberration-text($x: 0, $y: 0, $color: #000) {
+  text-shadow: $x $y $color;
+}
