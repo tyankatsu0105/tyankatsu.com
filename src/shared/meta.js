@@ -1,16 +1,32 @@
 import { SITE_NAME } from "./const";
 
 /**
- *
- * @param {{title: string, url: string, description: string, image: string, type: string}}
+ * @typedef {"website" | "article"} OGType
  */
-export const meta = ({ title, url, description, image, type }) => ({
+
+/**
+ *
+ * @param {{title: string, url: string, description: string, image: string, type: OGType}}
+ */
+export const meta = ({
+  title,
+  url,
+  description,
+  image = `${process.env.GRIDSOME_APP_BASE_URL}/ogp.png`,
+  type = "article",
+}) => ({
   title,
   meta: [
+    /**
+     * meta
+     */
     {
       name: "description",
       content: description.slice(0, 100),
     },
+    /**
+     * ogp
+     */
     {
       key: "og:title",
       property: "og:title",
@@ -32,6 +48,11 @@ export const meta = ({ title, url, description, image, type }) => ({
       content: image,
     },
     {
+      key: "og:image:alt",
+      property: "og:image:alt",
+      content: "",
+    },
+    {
       key: "og:site_name",
       property: "og:site_name",
       content: SITE_NAME,
@@ -41,6 +62,9 @@ export const meta = ({ title, url, description, image, type }) => ({
       property: "og:description",
       content: description.slice(0, 100),
     },
+    /**
+     * twitter
+     */
     {
       key: "twitter:card",
       name: "twitter:card",

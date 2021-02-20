@@ -1,13 +1,16 @@
 <template>
-  <Layout disableAnimation class="ContentfulPosts">
-    <PageHeading>{{ $page.post.title }}</PageHeading>
+	<Layout
+		disable-animation
+		class="ContentfulPosts"
+	>
+		<PageHeading>{{ $page.post.title }}</PageHeading>
 
-    <VueMarkdown
-      :source="$page.post.contents"
-      class="ContentfulPosts-Contents"
-      id="contents"
-    />
-  </Layout>
+		<VueMarkdown
+			id="contents"
+			:source="$page.post.contents"
+			class="ContentfulPosts-Contents"
+		/>
+	</Layout>
 </template>
 
 <script>
@@ -21,6 +24,17 @@
       VueMarkdown,
       Layout,
       PageHeading,
+    },
+
+    metaInfo() {
+      return Shared.Meta.meta({
+        title: this.$page.post.title,
+        url: `${process.env.GRIDSOME_APP_BASE_URL}${this.$page.post.path}`,
+        description: this.$page.post.contents,
+        /**
+         * TODO: imageを https://cloudinary.com/ で生成してみる
+         */
+      });
     },
 
     async mounted() {
@@ -102,17 +116,8 @@
       id
       contents
       title
-      slug
       date(format: "YYYY.MM.DD", locale: "ja")
-      eyecatch {
-        file {
-          url
-        }
-      }
-      tags {
-        id
-        title
-      }
+      path
     }
   }
 </page-query>

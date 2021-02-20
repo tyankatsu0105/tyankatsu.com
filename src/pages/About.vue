@@ -128,10 +128,20 @@
 <script>
   import Layout from "~/layouts/Default.vue";
   import PageHeading from "~/ui/atoms/PageHeading.vue";
+  import * as Shared from "~/shared";
+
   export default {
     components: {
       Layout,
       PageHeading,
+    },
+
+    metaInfo() {
+      return Shared.Meta.meta({
+        title: "About",
+        url: `${process.env.GRIDSOME_APP_BASE_URL}/about`,
+        description: `著者紹介ページです。`,
+      });
     },
   };
 </script>

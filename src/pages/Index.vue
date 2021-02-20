@@ -1,9 +1,14 @@
 <template>
-  <Layout>
-    <div class="Index">
-      <h1 class="Index_Heading" data-text="Tyankatsu">Tyankatsu</h1>
-    </div>
-  </Layout>
+	<Layout>
+		<div class="Index">
+			<h1
+				class="Index_Heading"
+				data-text="Tyankatsu"
+			>
+				Tyankatsu
+			</h1>
+		</div>
+	</Layout>
 </template>
 
 <script>
@@ -22,7 +27,6 @@
           url: `${process.env.GRIDSOME_APP_BASE_URL}`,
           description: Shared.Const.DESCRIPTION,
           type: "website",
-          image: `${process.env.GRIDSOME_APP_BASE_URL}/ogp.png`,
         }),
         titleTemplate: "%s",
       };
