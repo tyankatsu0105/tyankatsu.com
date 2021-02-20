@@ -1,16 +1,13 @@
 <template>
-	<Layout
-		disable-animation
-		class="ContentfulPosts"
-	>
-		<PageHeading>{{ $page.post.title }}</PageHeading>
+  <Layout disable-animation class="ContentfulPosts">
+    <PageHeading>{{ $page.post.title }}</PageHeading>
 
-		<VueMarkdown
-			id="contents"
-			:source="$page.post.contents"
-			class="ContentfulPosts-Contents"
-		/>
-	</Layout>
+    <VueMarkdown
+      id="contents"
+      :source="$page.post.contents"
+      class="ContentfulPosts-Contents"
+    />
+  </Layout>
 </template>
 
 <script>
@@ -31,9 +28,7 @@
         title: this.$page.post.title,
         url: `${process.env.GRIDSOME_APP_BASE_URL}${this.$page.post.path}`,
         description: this.$page.post.contents,
-        /**
-         * TODO: imageを https://cloudinary.com/ で生成してみる
-         */
+        image: `https://tyankatsu-com-og-image.vercel.app/${this.$page.post.title}.png`,
       });
     },
 
