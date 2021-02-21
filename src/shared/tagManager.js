@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-export default function () {
+export const tagManager = () => {
   if (process.env.NODE_ENV === "production") {
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
@@ -32,4 +32,4 @@ export default function () {
       f.parentNode.insertBefore(j, f);
     })(window, document, "script", "dataLayer", "GTM-T3MJNJH");
   }
-}
+};

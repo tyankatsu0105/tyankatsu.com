@@ -11,7 +11,7 @@ import "@/styles/core/base.scss";
 import store from "./store";
 
 if (process.browser) {
-  Shared.TagManager();
+  Shared.TagManager.tagManager();
 }
 
 export default function (Vue, { router, head, isClient, appOptions }) {
