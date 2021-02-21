@@ -6,6 +6,14 @@ module.exports = {
   },
   plugins: [
     {
+      use: "gridsome-plugin-gtm",
+      options: {
+        id: "GTM-T3MJNJH",
+        enabled: true,
+        debug: process.env.NODE_ENV === "development",
+      },
+    },
+    {
       use: "@gridsome/source-contentful",
       options: {
         space: process.env.CONTENTFUL_SPACE,
