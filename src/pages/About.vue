@@ -104,6 +104,14 @@
 						v-fukuoka
 					</g-link>
 				</li>
+				<li class="About-ListItem">
+					<g-link
+						href="https://fec-fukuoka.connpass.com/"
+						class="About-ListItem_Link"
+					>
+						フロントエンドカンファレンス福岡
+					</g-link>
+				</li>
 			</ul>
 		</section>
 
@@ -118,6 +126,14 @@
 						class="About-ListItem_Link"
 					>
 						ちょっとお隣よかですか？ - 福岡IT系雑談ラジオ
+					</g-link>
+				</li>
+				<li class="About-ListItem">
+					<g-link
+						href="https://anchor.fm/hrbrain"
+						class="About-ListItem_Link"
+					>
+						HRBrain ノウナイラジオ
 					</g-link>
 				</li>
 			</ul>

@@ -1,9 +1,9 @@
 <template>
-	<div>
+	<p class="Entry">
 		<g-link :to="`/posts/${post.slug}`">
-			<span class="Entry-Date">{{ date }}</span> {{ post.title }}
+			<span class="Entry-Date">{{ date }}</span> | {{ post.title }}
 		</g-link>
-	</div>
+	</p>
 </template>
 
 <script>
@@ -36,7 +36,7 @@
           };
         }
 
-        return `${result.string} ${result.time}`;
+        return `${result.string}:${result.time}`;
       },
     },
   };
@@ -44,6 +44,7 @@
 
 <style lang="scss" scoped>
   .Entry {
+    font-size: 1.2rem;
     &-Date {
       font-style: italic;
       font-weight: 100;

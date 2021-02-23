@@ -2,11 +2,12 @@
 	<Layout>
 		<PageHeading>Posts</PageHeading>
 
-		<ul
-			v-for="({ node: post }, index) in posts.edges"
-			:key="index"
-		>
-			<li>
+		<ul>
+			<li
+				v-for="({ node: post }, index) in posts.edges"
+				:key="index"
+				class="PostList-ListItem"
+			>
 				<Entry :post="post" />
 			</li>
 		</ul>
@@ -30,3 +31,13 @@
     },
   };
 </script>
+
+<style lang="scss">
+  .PostList {
+    &-ListItem {
+      & + & {
+        margin-top: 8px;
+      }
+    }
+  }
+</style>
