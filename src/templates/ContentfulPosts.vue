@@ -1,13 +1,16 @@
 <template>
-  <Layout disable-animation class="ContentfulPosts">
-    <PageHeading>{{ $page.post.title }}</PageHeading>
+	<Layout
+		disable-animation
+		class="ContentfulPosts"
+	>
+		<PageHeading>{{ $page.post.title }}</PageHeading>
 
-    <VueMarkdown
-      id="contents"
-      :source="$page.post.contents"
-      class="ContentfulPosts-Contents"
-    />
-  </Layout>
+		<VueMarkdown
+			id="contents"
+			:source="$page.post.contents"
+			class="ContentfulPosts-Contents"
+		/>
+	</Layout>
 </template>
 
 <script>
@@ -246,6 +249,7 @@
         display: inline;
         padding: 2px 8px;
         margin: 0 4px;
+        word-break: break-all;
         background-color: #000;
         border-radius: 4px;
       }
@@ -253,6 +257,7 @@
         position: relative;
         .shiki {
           padding: 1em;
+          overflow-x: scroll;
         }
         .annotation {
           position: absolute;
