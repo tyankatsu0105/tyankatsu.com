@@ -44,7 +44,7 @@
     height: 100%;
     &_Heading {
       position: relative;
-      font-size: 10rem;
+      font-size: 16vw;
       font-weight: bold;
       color: #fff;
       &::before,
