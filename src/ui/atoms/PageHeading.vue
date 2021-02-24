@@ -17,6 +17,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 10;
     width: 100%;
     height: 72px;
     padding: 12px;

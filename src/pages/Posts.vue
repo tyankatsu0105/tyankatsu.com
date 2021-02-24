@@ -45,10 +45,8 @@
             id
             title
           }
-          createdAt(locale: "ja")
-          updatedAt(locale: "ja")
-          formatedCreatedAt: createdAt(format: "YYYY.MM.DD", locale: "ja")
-          formatedUpdatedAt: updatedAt(format: "YYYY.MM.DD", locale: "ja")
+          createdAt: createdAt(format: "YYYY.MM.DD", locale: "ja")
+          updatedAt: updatedAt(format: "YYYY.MM.DD", locale: "ja")
         }
       }
     }

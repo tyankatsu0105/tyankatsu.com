@@ -1,23 +1,26 @@
 <template>
-  <div class="Default">
-    <transition name="page" appear>
-      <div
-        class="Default_Container"
-        :class="{
-          'open-Header': isHeaderOpen,
-          'disable-animation': disableAnimation,
-        }"
-      >
-        <HeaderOpenButton />
-        <VHeader />
-        <div class="Default_ContentsWrap">
-          <main class="Default_Contents">
-            <slot></slot>
-          </main>
-        </div>
-      </div>
-    </transition>
-  </div>
+	<div class="Default">
+		<transition
+			name="page"
+			appear
+		>
+			<div
+				class="Default_Container"
+				:class="{
+					'open-Header': isHeaderOpen,
+					'disable-animation': disableAnimation,
+				}"
+			>
+				<HeaderOpenButton />
+				<VHeader />
+				<div class="Default_ContentsWrap">
+					<main class="Default_Contents">
+						<slot></slot>
+					</main>
+				</div>
+			</div>
+		</transition>
+	</div>
 </template>
 
 <script>
@@ -29,13 +32,13 @@
       VHeader,
       HeaderOpenButton,
     },
-    computed: {
-      ...mapState("VHeader", ["isHeaderOpen"]),
-    },
     props: {
       disableAnimation: {
         type: Boolean,
       },
+    },
+    computed: {
+      ...mapState("VHeader", ["isHeaderOpen"]),
     },
     metaInfo: {
       htmlAttrs: {
@@ -55,6 +58,10 @@
     width: 100vw;
     height: 100vh;
     padding: 25px;
+
+    @include mq-xs {
+      padding: 12px;
+    }
     &_Container {
       @include background-stripe(
         $border-width: 2px,
@@ -88,9 +95,12 @@
     &_ContentsWrap {
       width: 100%;
       height: 100%;
-      padding: 20px;
-      padding-bottom: calc(25px + 72px);
+      padding: 20px 20px calc(25px + 72px);
       overflow-y: scroll;
+
+      @include mq-xs {
+        padding: 90px 10px calc(10px + 72px);
+      }
     }
     &_Contents {
       width: 100%;
