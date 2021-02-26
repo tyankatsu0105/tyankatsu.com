@@ -1,14 +1,14 @@
 <template>
-	<PostList :posts="$page.allContentfulPosts" />
+  <Posts :posts="$page.allContentfulPosts" />
 </template>
 
 <script>
-  import PostList from "~/ui/templates/PostList.vue";
+  import Posts from "~/ui/templates/Posts.vue";
   import * as Shared from "~/shared";
 
   export default {
     components: {
-      PostList,
+      Posts,
     },
 
     metaInfo() {

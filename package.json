@@ -9,9 +9,11 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@arayaryoma/speakerdeck-scraper": "^0.1.2",
     "@gridsome/plugin-critical": "^0.2.0",
     "@gridsome/plugin-sitemap": "^0.4.0",
     "@gridsome/source-contentful": "^0.6.0",
+    "axios": "^0.21.1",
     "babel-runtime": "^6.26.0",
     "gridsome": "^0.7.0",
     "gridsome-plugin-gtm": "^0.1.1",
@@ -23,6 +25,7 @@
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.18.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-gridsome": "^1.6.1",
     "eslint-plugin-vue": "^7.4.1",
     "lint-staged": "^10.5.3",

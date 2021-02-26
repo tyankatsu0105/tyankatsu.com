@@ -1,40 +1,33 @@
 <template>
-	<transition name="header">
-		<header
-			v-if="isHeaderOpen"
-			class="VHeader"
-		>
-			<HeaderCloseButton />
-			<nav class="VHeader_Menu">
-				<ul class="VHeader_MenuList">
-					<li class="VHeader_MenuListItem">
-						<g-link
-							to="/"
-							@click.native="shouldHeaderOpen(false)"
-						>
-							HOME
-						</g-link>
-					</li>
-					<li class="VHeader_MenuListItem">
-						<g-link
-							to="/about"
-							@click.native="shouldHeaderOpen(false)"
-						>
-							ABOUT
-						</g-link>
-					</li>
-					<li class="VHeader_MenuListItem">
-						<g-link
-							to="/posts"
-							@click.native="shouldHeaderOpen(false)"
-						>
-							Posts
-						</g-link>
-					</li>
-				</ul>
-			</nav>
-		</header>
-	</transition>
+  <transition name="header">
+    <header v-if="isHeaderOpen" class="VHeader">
+      <HeaderCloseButton />
+      <nav class="VHeader_Menu">
+        <ul class="VHeader_MenuList">
+          <li class="VHeader_MenuListItem">
+            <g-link to="/" @click.native="shouldHeaderOpen(false)">
+              HOME
+            </g-link>
+          </li>
+          <li class="VHeader_MenuListItem">
+            <g-link to="/about" @click.native="shouldHeaderOpen(false)">
+              ABOUT
+            </g-link>
+          </li>
+          <li class="VHeader_MenuListItem">
+            <g-link to="/posts" @click.native="shouldHeaderOpen(false)">
+              Posts
+            </g-link>
+          </li>
+          <li class="VHeader_MenuListItem">
+            <g-link to="/slides" @click.native="shouldHeaderOpen(false)">
+              Slides
+            </g-link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </transition>
 </template>
 
 <script>
