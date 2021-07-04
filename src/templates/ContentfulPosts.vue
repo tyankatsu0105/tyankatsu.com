@@ -9,12 +9,13 @@
 			id="contents"
 			:source="$page.post.contents"
 			class="ContentfulPosts-Contents"
+      :anchor-attributes="anchorAttrs"
 		/>
 	</Layout>
 </template>
 
 <script>
-  import VueMarkdown from "vue-markdown";
+  import VueMarkdown from "@adapttive/vue-markdown";
   import Layout from "~/layouts/Default.vue";
   import PageHeading from "~/ui/atoms/PageHeading.vue";
   import * as Shared from "~/shared";
@@ -24,6 +25,15 @@
       VueMarkdown,
       Layout,
       PageHeading,
+    },
+
+    data() {
+      return {
+        anchorAttrs: {
+          target: '_blank',
+          rel: 'noopener noreferrer nofollow'
+        }
+      }
     },
 
     metaInfo() {
@@ -65,10 +75,6 @@
         contentsElement.insertBefore(wrapCodeElement, element.parentNode);
 
         element.parentNode.remove();
-      });
-
-      document.querySelectorAll("a").forEach((element) => {
-        Shared.ToExternalLink.toExternalLink(element);
       });
     },
     methods: {

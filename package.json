@@ -9,6 +9,7 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@adapttive/vue-markdown": "^4.0.1",
     "@arayaryoma/speakerdeck-scraper": "^0.1.2",
     "@gridsome/plugin-critical": "^0.2.0",
     "@gridsome/plugin-sitemap": "^0.4.0",
@@ -17,7 +18,6 @@
     "babel-runtime": "^6.26.0",
     "gridsome": "^0.7.0",
     "gridsome-plugin-gtm": "^0.1.1",
-    "vue-markdown": "^2.2.4",
     "vuex": "^3.6.0"
   },
   "devDependencies": {
