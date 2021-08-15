@@ -10,6 +10,7 @@
 			:source="$page.post.contents"
 			class="ContentfulPosts-Contents"
       :anchor-attributes="anchorAttrs"
+      :postrender="postrender"
 		/>
 	</Layout>
 </template>
@@ -19,6 +20,7 @@
   import Layout from "~/layouts/Default.vue";
   import PageHeading from "~/ui/atoms/PageHeading.vue";
   import * as Shared from "~/shared";
+import { setOnigasmWASM, setCDN, Highlighter, getHighlighter } from 'shiki/dist/index.browser.mjs'
 
   export default {
     components: {
@@ -45,39 +47,47 @@
       });
     },
 
-    async mounted() {
-      const highlighter = await shiki.getHighlighter({
+    // async mounted() {
+    //   const highlighter = await shiki.getHighlighter({
+    //     theme: Shared.Shiki.theme["monokai"],
+    //   });
+    //   const contentsElement = document.getElementById("contents");
+
+    //   document.querySelectorAll("code").forEach(async (element) => {
+    //     if (element.parentNode.tagName !== "PRE") {
+    //       /**
+    //        * codeタグにクラスを付与する
+    //        */
+    //       element.classList.add("code");
+    //       return;
+    //     }
+    //     const wrapCodeElement = document.createElement("div");
+    //     wrapCodeElement.classList.add("wrapCode");
+
+    //     const highlightCode = await this.getHighlightCode(element, highlighter);
+    //     wrapCodeElement.innerHTML = highlightCode;
+
+    //     if (this.hasCodeAnnotation(element)) {
+    //       const codeAnnotationElement = document.createElement("p");
+    //       codeAnnotationElement.classList.add("annotation");
+    //       const codeAnnotation = this.getCodeAnnotation(element);
+    //       codeAnnotationElement.textContent = codeAnnotation;
+    //       wrapCodeElement.prepend(codeAnnotationElement);
+    //     }
+    //     contentsElement.insertBefore(wrapCodeElement, element.parentNode);
+
+    //     element.parentNode.remove();
+    //   });
+    // },
+    methods: {
+      async postrender (str) {
+      const highlighter = await getHighlighter({
         theme: Shared.Shiki.theme["monokai"],
       });
-      const contentsElement = document.getElementById("contents");
-
-      document.querySelectorAll("code").forEach(async (element) => {
-        if (element.parentNode.tagName !== "PRE") {
-          /**
-           * codeタグにクラスを付与する
-           */
-          element.classList.add("code");
-          return;
-        }
-        const wrapCodeElement = document.createElement("div");
-        wrapCodeElement.classList.add("wrapCode");
-
-        const highlightCode = await this.getHighlightCode(element, highlighter);
-        wrapCodeElement.innerHTML = highlightCode;
-
-        if (this.hasCodeAnnotation(element)) {
-          const codeAnnotationElement = document.createElement("p");
-          codeAnnotationElement.classList.add("annotation");
-          const codeAnnotation = this.getCodeAnnotation(element);
-          codeAnnotationElement.textContent = codeAnnotation;
-          wrapCodeElement.prepend(codeAnnotationElement);
-        }
-        contentsElement.insertBefore(wrapCodeElement, element.parentNode);
-
-        element.parentNode.remove();
-      });
+      console.log(highlighter);
+      console.log(str);
+      return str
     },
-    methods: {
       /**
        * language-xxのxxを取得
        */
