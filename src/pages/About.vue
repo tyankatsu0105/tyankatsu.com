@@ -56,6 +56,14 @@
 						Speaker Deck
 					</g-link>
 				</li>
+				<li class="About-ListItem">
+					<g-link
+						href="https://katsulog.netlify.app/"
+						class="About-ListItem_Link"
+					>
+						katsulog(diary)
+					</g-link>
+				</li>
 			</ul>
 		</section>
 
