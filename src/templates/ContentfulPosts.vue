@@ -1,24 +1,26 @@
 <template>
-	<Layout
-		disable-animation
-		class="ContentfulPosts"
-	>
-		<PageHeading>{{ $page.post.title }}</PageHeading>
 
-		<VueMarkdown
-			id="contents"
-			:source="$page.post.contents"
-			class="ContentfulPosts-Contents"
+  <Layout disable-animation class="ContentfulPosts">
+
+    <PageHeading>{{ $page.post.title }}</PageHeading>
+
+    <VueMarkdown
+      id="contents"
+      :source="$page.post.contents"
+      class="ContentfulPosts-Contents"
       :anchor-attributes="anchorAttrs"
-		/>
-	</Layout>
+    />
+
+  </Layout>
+
 </template>
 
 <script>
   import VueMarkdown from "@adapttive/vue-markdown";
   import Layout from "~/layouts/Default.vue";
   import PageHeading from "~/ui/atoms/PageHeading.vue";
-  import * as Shared from "~/shared";
+  import { meta } from "~/shared/meta";
+  import { theme } from "~/shared/shiki";
 
   export default {
     components: {
@@ -30,14 +32,14 @@
     data() {
       return {
         anchorAttrs: {
-          target: '_blank',
-          rel: 'noopener noreferrer nofollow'
-        }
-      }
+          target: "_blank",
+          rel: "noopener noreferrer nofollow",
+        },
+      };
     },
 
     metaInfo() {
-      return Shared.Meta.meta({
+      return meta({
         title: this.$page.post.title,
         url: `${process.env.GRIDSOME_APP_BASE_URL}${this.$page.post.path}`,
         description: this.$page.post.contents,
@@ -47,7 +49,7 @@
 
     async mounted() {
       const highlighter = await shiki.getHighlighter({
-        theme: Shared.Shiki.theme["monokai"],
+        theme: theme["monokai"],
       });
       const contentsElement = document.getElementById("contents");
 
@@ -297,3 +299,4 @@
     }
   }
 </style>
+

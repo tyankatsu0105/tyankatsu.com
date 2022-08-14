@@ -1,10 +1,12 @@
 <template>
+
   <Posts :posts="$page.allContentfulPosts" />
+
 </template>
 
 <script>
   import Posts from "~/ui/templates/Posts.vue";
-  import * as Shared from "~/shared";
+  import { meta } from "~/shared/meta";
 
   export default {
     components: {
@@ -12,7 +14,7 @@
     },
 
     metaInfo() {
-      return Shared.Meta.meta({
+      return meta({
         title: "Posts",
         url: `${process.env.GRIDSOME_APP_BASE_URL}/posts`,
         description: `ブログ投稿一覧ページです。`,
@@ -52,3 +54,4 @@
     }
   }
 </page-query>
+
