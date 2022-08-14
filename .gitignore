@@ -5,7 +5,7 @@ src/.temp
 node_modules
 dist
 .env
-.env.*
+
 
 .eslintcache
 .stylelintcache
