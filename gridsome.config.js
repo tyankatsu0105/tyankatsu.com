@@ -6,6 +6,35 @@ module.exports = {
   },
   plugins: [
     {
+      use: "gridsome-plugin-feed",
+      options: {
+        contentTypes: ["ContentfulPosts"],
+        feedOptions: {
+          title: "tyankatsu.com RSS Feed",
+          description: "tyankatsu.comのRSSフィードです。",
+        },
+        rss: {
+          enabled: true,
+          output: "/feed.xml",
+        },
+        atom: {
+          enabled: false,
+          output: "/feed.atom",
+        },
+        json: {
+          enabled: false,
+          output: "/feed.json",
+        },
+        enforceTrailingSlashes: false,
+        maxItems: 1000000000000000000,
+        nodeToFeedItem: (node) => ({
+          title: node.title,
+          date: new Date(node.date),
+          content: node.content,
+        }),
+      },
+    },
+    {
       use: "gridsome-plugin-gtm",
       options: {
         id: "GTM-T3MJNJH",
