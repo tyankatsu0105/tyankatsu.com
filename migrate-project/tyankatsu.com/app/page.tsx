@@ -1,19 +1,14 @@
-import { draftMode } from "next/headers";
+// import { draftMode } from "next/headers";
 import Image from "next/image";
 import styles from "./page.module.css";
-import { getAllPosts } from "@/lib/api";
+// import { getAllPosts } from "@/lib/api";
 
 export default async function Home() {
-  const { isEnabled } = await draftMode();
-  const allPosts = await getAllPosts(isEnabled);
+  // const { isEnabled } = await draftMode();
+  // const allPosts = await getAllPosts(isEnabled);
 
   return (
     <div className={styles.page}>
-      <ul>
-        {allPosts.map((post) => (
-          <li>{post.title}</li>
-        ))}
-      </ul>
       <main className={styles.main}>
         <Image
           className={styles.logo}

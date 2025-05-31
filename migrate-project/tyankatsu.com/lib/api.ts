@@ -1,3 +1,6 @@
+import { draftMode } from "next/headers";
+import { Posts } from "./contentful";
+
 const POST_GRAPHQL_FIELDS = `
   slug
   title
@@ -76,7 +79,7 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
   return extractPost(entry);
 }
 
-export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
+export async function getAllPosts(isDraftMode: boolean): Promise<Posts[]> {
   const entries = await fetchGraphQL(
     `query {
       postsCollection(where: { slug_exists: true }, order: sys_firstPublishedAt_DESC, preview: ${
