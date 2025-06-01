@@ -12,31 +12,41 @@
   padding: 20px;
   position: relative;
   overflow: hidden;
+  filter: contrast(0.85) saturate(0.9) sepia(0.1) blur(0.3px);
 
   /* ブラウン管の曲面効果 */
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5),
-    inset 0 0 100px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.7),
+    inset 0 0 160px rgba(0, 0, 0, 0.5),
+    /* より強いビネット効果 */ inset 0 0 20px 10px rgba(0, 0, 0, 0.9);
 
   /* スキャンラインのアニメーション */
   background:
-    /* ノイズ効果 */ repeating-linear-gradient(
-      90deg,
+    /* 縦方向ノイズ */ repeating-linear-gradient(
+      0deg,
       transparent,
-      transparent 2px,
-      rgba(255, 255, 255, 0.1) 2px,
+      transparent 1px,
+      rgba(255, 255, 255, 0.15) 2px,
       transparent 3px
     ),
-    /* メインのスキャンライン */
-      linear-gradient(transparent 50%, rgba(0, 0, 0, 0.15) 50%),
+    /* カラーノイズ効果 */
+      repeating-radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 0, 0, 0.12),
+        rgba(0, 255, 0, 0.12) 2px,
+        rgba(0, 0, 255, 0.12) 3px
+      ),
+    /* より太いスキャンライン */
+      linear-gradient(transparent 50%, rgba(0, 0, 0, 0.4) 50%),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 2px,
-      hsla(0, 0%, 47.8%, 0.9) 3px,
-      hsla(0, 0%, 47.8%, 0.9) 3px
+      transparent 4px,
+      hsla(0, 0%, 47.8%, 0.95) 5px,
+      hsla(0, 0%, 47.8%, 0.95) 8px
     );
-  background-size: 100% 100%, 100% 4px, 100% 100%;
-  animation: scan 1s steps(60) infinite;
+  background-size: 100% 100%, 100% 100%, 100% 8px, 100% 100%;
+  animation: scanNoiseH 0.3s steps(8) infinite,
+    scanNoiseV 0.08s steps(4) infinite;
 }
 
 /* グロー効果とちらつき */
@@ -49,40 +59,124 @@
   width: 100%;
   height: 100%;
   background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  opacity: 0.8;
+      circle at center,
+      transparent 20%,
+      rgba(0, 0, 0, 0.3) 90%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+  opacity: 0.85;
   animation: flicker 0.15s infinite;
+  backdrop-filter: brightness(0.95) contrast(0.9);
 }
 
-@keyframes scan {
+/* RGBカラーずれ効果 */
+.main-inside::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.08),
+    rgba(0, 255, 0, 0.08) 50%,
+    rgba(0, 0, 255, 0.08)
+  );
+  mix-blend-mode: screen;
+  animation: colorShift 4s ease-in-out infinite;
+  pointer-events: none;
+  backdrop-filter: brightness(0.98) blur(0.2px);
+}
+
+@keyframes scanNoiseH {
   0% {
-    background-position: 0 0, 0 0, 0 0;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  25% {
+    background-position: -8px 0, 5px 0, 0 25%, 0 0;
   }
   50% {
-    background-position: -10px 0, 0 50%, 0 0;
+    background-position: 8px 0, -5px 0, 0 50%, 0 0;
+  }
+  75% {
+    background-position: -4px 0, 8px 0, 0 75%, 0 0;
   }
   100% {
-    background-position: 0 0, 0 100%, 0 0;
+    background-position: 0 0, 0 0, 0 100%, 0 0;
+  }
+}
+
+@keyframes scanNoiseV {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  33% {
+    background-position: 0 4px, 0 -4px, 0 33%, 0 0;
+  }
+  66% {
+    background-position: 0 -4px, 0 4px, 0 66%, 0 0;
+  }
+  100% {
+    background-position: 0 0, 0 0, 0 100%, 0 0;
   }
 }
 
 @keyframes flicker {
   0% {
-    opacity: 0.8;
+    opacity: 0.85;
+    backdrop-filter: brightness(0.95) contrast(0.9);
   }
   25% {
-    opacity: 0.95;
+    opacity: 0.9;
+    backdrop-filter: brightness(0.97) contrast(0.92);
   }
   30% {
     opacity: 0.5;
+    backdrop-filter: brightness(0.93) contrast(0.88);
   }
   35% {
-    opacity: 0.95;
+    opacity: 0.85;
+    backdrop-filter: brightness(0.96) contrast(0.91);
+  }
+  40% {
+    opacity: 0.4;
+    backdrop-filter: brightness(0.92) contrast(0.87);
+  }
+  45% {
+    opacity: 0.9;
+    backdrop-filter: brightness(0.95) contrast(0.9);
   }
   100% {
-    opacity: 0.8;
+    opacity: 0.85;
+    backdrop-filter: brightness(0.95) contrast(0.9);
+  }
+}
+
+@keyframes colorShift {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+    filter: blur(0.2px);
+  }
+  25% {
+    transform: translate(-2px, 1px) scale(1.001);
+    opacity: 0.5;
+    filter: blur(0.3px);
+  }
+  75% {
+    transform: translate(2px, -1px) scale(0.999);
+    opacity: 0.45;
+    filter: blur(0.25px);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+    filter: blur(0.2px);
   }
 }
