@@ -7,5 +7,5 @@ export default async function Home() {
   // const { isEnabled } = await draftMode();
   // const allPosts = await getAllPosts(isEnabled);
 
-  return <p>tyankatsu</p>;
+  return <h1 className={styles.title}>tyankatsu</h1>;
 }

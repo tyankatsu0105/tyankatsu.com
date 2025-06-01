@@ -41,6 +41,7 @@
 
 /* グロー効果とちらつき */
 .main-inside::before {
+  pointer-events: none;
   content: "";
   position: absolute;
   top: 0;
