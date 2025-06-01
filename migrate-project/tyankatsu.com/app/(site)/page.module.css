@@ -11,8 +11,9 @@
   position: relative;
   letter-spacing: 1px;
   filter: contrast(0.9) brightness(0.88) blur(0.5px);
-  animation: glitch1 4.2s steps(1) infinite, glitch2 3.1s steps(1) infinite,
-    glitch3 5.7s steps(1) infinite;
+  animation: glitch1 0.7s steps(1) infinite, glitch2 0.5s steps(1) infinite,
+    glitch3 0.9s steps(1) infinite, glitch4 0.6s steps(1) infinite,
+    glitch5 0.8s steps(1) infinite;
 }
 
 @keyframes glitch1 {
@@ -54,7 +55,39 @@
     filter: contrast(0.9) brightness(0.88) blur(0.5px);
   }
   99% {
-    transform: translateX(-10px);
+    transform: translateX(-8px);
+    filter: contrast(0.85) brightness(0.85) blur(0.6px);
+  }
+  100% {
+    transform: translateX(0);
+    filter: contrast(0.9) brightness(0.88) blur(0.5px);
+  }
+}
+
+@keyframes glitch4 {
+  0%,
+  98% {
+    transform: translateX(0);
+    filter: contrast(0.9) brightness(0.88) blur(0.5px);
+  }
+  99% {
+    transform: translateX(20px);
+    filter: contrast(0.85) brightness(0.85) blur(0.6px);
+  }
+  100% {
+    transform: translateX(0);
+    filter: contrast(0.9) brightness(0.88) blur(0.5px);
+  }
+}
+
+@keyframes glitch5 {
+  0%,
+  98% {
+    transform: translateX(0);
+    filter: contrast(0.9) brightness(0.88) blur(0.5px);
+  }
+  99% {
+    transform: translateX(-12px);
     filter: contrast(0.85) brightness(0.85) blur(0.6px);
   }
   100% {
