@@ -45,8 +45,8 @@
       hsla(0, 0%, 47.8%, 0.95) 8px
     );
   background-size: 100% 100%, 100% 100%, 100% 8px, 100% 100%;
-  animation: scanNoiseH 0.3s steps(8) infinite,
-    scanNoiseV 0.08s steps(4) infinite;
+  /* animation: scanNoiseH 5s steps(8) infinite, scanNoiseV 5s steps(4) infinite; */
+  animation: scanNoiseH 8s steps(8) infinite, scanNoiseV 6s steps(4) infinite;
 }
 
 /* グロー効果とちらつき */
