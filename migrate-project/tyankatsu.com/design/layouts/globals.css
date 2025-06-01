@@ -7,9 +7,10 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-geist-dot-gothic-16) sans-serif;
+  font-family: var(--font-geist-dot-gothic-16), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
 * {
