@@ -3,13 +3,17 @@
   grid-template-areas:
     "content"
     "heading";
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
   gap: 40px;
 }
 
 .heading {
   grid-area: heading;
   font-size: 48px;
-  margin: 0;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
 }
 
 .sections {
@@ -17,6 +21,8 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .section {
