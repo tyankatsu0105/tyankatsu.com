@@ -8,7 +8,9 @@ export function PageLayout({
 }>) {
   return (
     <main className={styles.main}>
-      <div className={styles["main-inside"]}>{children}</div>
+      <div className={styles["main-inside"]}>
+        <div className={styles["main-content"]}>{children}</div>
+      </div>
     </main>
   );
 }
