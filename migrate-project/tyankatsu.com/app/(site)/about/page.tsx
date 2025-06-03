@@ -1,17 +1,12 @@
-// import { draftMode } from "next/headers";
 import Link from "next/link";
 import styles from "./page.module.css";
 import type { Metadata } from "next";
-// import { getAllPosts } from "@/lib/api";
+
 export const metadata: Metadata = {
-  title: "tyankatsu.com",
-  description:
-    "フロントエンドエンジニアのtyankatsuの取り組んでいることや考察や技術を紹介するサイトです。",
+  title: "About - tyankatsu.com",
+  description: "著者紹介ページです。",
 };
 export default async function Home() {
-  // const { isEnabled } = await draftMode();
-  // const allPosts = await getAllPosts(isEnabled);
-
   return (
     <>
       <div className={styles["container"]}>
