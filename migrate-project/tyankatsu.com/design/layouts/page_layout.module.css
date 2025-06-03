@@ -19,43 +19,25 @@
   position: relative;
   overflow-y: auto;
   z-index: 1;
-  filter: contrast(0.85) saturate(0.9) sepia(0.1) blur(0.3px);
+  filter: contrast(0.85) saturate(0.9);
 
   /* ブラウン管の曲面効果 */
   box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.7),
-    inset 0 0 160px rgba(0, 0, 0, 0.5),
-    /* より強いビネット効果 */ inset 0 0 20px 10px rgba(0, 0, 0, 0.9);
+    inset 0 0 160px rgba(0, 0, 0, 0.5), inset 0 0 20px 10px rgba(0, 0, 0, 0.9);
 
-  /* スキャンラインのアニメーション */
-  background:
-    /* 縦方向ノイズ */ repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 1px,
-      rgba(255, 255, 255, 0.15) 2px,
-      transparent 3px
-    ),
-    /* カラーノイズ効果 */
-      repeating-radial-gradient(
-        circle at 50% 50%,
-        rgba(255, 0, 0, 0.12),
-        rgba(0, 255, 0, 0.12) 2px,
-        rgba(0, 0, 255, 0.12) 3px
-      ),
-    /* より太いスキャンライン */
-      linear-gradient(transparent 50%, rgba(0, 0, 0, 0.4) 50%),
+  /* スキャンライン */
+  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.3) 50%),
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 4px,
-      hsla(0, 0%, 47.8%, 0.95) 5px,
-      hsla(0, 0%, 47.8%, 0.95) 8px
+      hsla(0, 0%, 47.8%, 0.8) 5px,
+      hsla(0, 0%, 47.8%, 0.8) 8px
     );
-  background-size: 100% 100%, 100% 100%, 100% 8px, 100% 100%;
-  animation: scanNoiseH 8s steps(8) infinite, scanNoiseV 6s steps(4) infinite;
+  background-size: 100% 8px, 100% 100%;
 }
 
-/* グロー効果とちらつき */
+/* グロー効果 */
 .main-inside::before {
   pointer-events: none;
   content: "";
@@ -65,19 +47,12 @@
   width: 100%;
   height: 100%;
   background: radial-gradient(
-      circle at center,
-      transparent 20%,
-      rgba(0, 0, 0, 0.3) 90%,
-      rgba(0, 0, 0, 0.4) 100%
-    ),
-    radial-gradient(
-      circle at center,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(255, 255, 255, 0) 70%
-    );
+    circle at center,
+    transparent 20%,
+    rgba(0, 0, 0, 0.3) 90%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
   opacity: 0.85;
-  animation: flicker 0.15s infinite;
-  backdrop-filter: brightness(0.95) contrast(0.9);
 }
 
 /* RGBカラーずれ効果 */
@@ -95,94 +70,6 @@
     rgba(0, 0, 255, 0.08)
   );
   mix-blend-mode: screen;
-  animation: colorShift 4s ease-in-out infinite;
+  opacity: 0.4;
   pointer-events: none;
-  backdrop-filter: brightness(0.98) blur(0.2px);
-}
-
-@keyframes scanNoiseH {
-  0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
-  }
-  25% {
-    background-position: -8px 0, 5px 0, 0 25%, 0 0;
-  }
-  50% {
-    background-position: 8px 0, -5px 0, 0 50%, 0 0;
-  }
-  75% {
-    background-position: -4px 0, 8px 0, 0 75%, 0 0;
-  }
-  100% {
-    background-position: 0 0, 0 0, 0 100%, 0 0;
-  }
-}
-
-@keyframes scanNoiseV {
-  0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
-  }
-  33% {
-    background-position: 0 4px, 0 -4px, 0 33%, 0 0;
-  }
-  66% {
-    background-position: 0 -4px, 0 4px, 0 66%, 0 0;
-  }
-  100% {
-    background-position: 0 0, 0 0, 0 100%, 0 0;
-  }
-}
-
-@keyframes flicker {
-  0% {
-    opacity: 0.85;
-    backdrop-filter: brightness(0.95) contrast(0.9);
-  }
-  25% {
-    opacity: 0.9;
-    backdrop-filter: brightness(0.97) contrast(0.92);
-  }
-  30% {
-    opacity: 0.5;
-    backdrop-filter: brightness(0.93) contrast(0.88);
-  }
-  35% {
-    opacity: 0.85;
-    backdrop-filter: brightness(0.96) contrast(0.91);
-  }
-  40% {
-    opacity: 0.4;
-    backdrop-filter: brightness(0.92) contrast(0.87);
-  }
-  45% {
-    opacity: 0.9;
-    backdrop-filter: brightness(0.95) contrast(0.9);
-  }
-  100% {
-    opacity: 0.85;
-    backdrop-filter: brightness(0.95) contrast(0.9);
-  }
-}
-
-@keyframes colorShift {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.4;
-    filter: blur(0.2px);
-  }
-  25% {
-    transform: translate(-2px, 1px) scale(1.001);
-    opacity: 0.5;
-    filter: blur(0.3px);
-  }
-  75% {
-    transform: translate(2px, -1px) scale(0.999);
-    opacity: 0.45;
-    filter: blur(0.25px);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.4;
-    filter: blur(0.2px);
-  }
 }
