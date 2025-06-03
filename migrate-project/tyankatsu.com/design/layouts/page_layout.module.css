@@ -26,15 +26,28 @@
     inset 0 0 160px rgba(0, 0, 0, 0.5), inset 0 0 20px 10px rgba(0, 0, 0, 0.9);
 
   /* スキャンライン */
-  /* background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.3) 50%),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 4px,
-      hsla(0, 0%, 47.8%, 0.8) 5px,
-      hsla(0, 0%, 47.8%, 0.8) 8px
-    ); */
-  background-size: 100% 8px, 100% 100%;
+  background:
+    /* スキャンライン */ linear-gradient(
+      transparent 50%,
+      rgba(0, 0, 0, 0.3) 50%
+    ),
+    /* ブラウン管ノイズ（レイヤー1） */
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 1px,
+        rgba(0, 0, 0, 0.1) 1px,
+        rgba(0, 0, 0, 0.1) 2px
+      ),
+    /* ブラウン管ノイズ（レイヤー2） */
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(0, 0, 0, 0.08) 2px,
+        rgba(0, 0, 0, 0.08) 4px
+      );
+  background-size: 100% 8px, 100% 100%, 100% 100%;
 }
 
 /* グロー効果 */
