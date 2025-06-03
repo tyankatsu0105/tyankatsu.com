@@ -4,7 +4,7 @@
     "content"
     "heading";
   grid-template-rows: 1fr auto;
-  min-height: 100vh;
+  height: 100%;
   gap: 40px;
 }
 
