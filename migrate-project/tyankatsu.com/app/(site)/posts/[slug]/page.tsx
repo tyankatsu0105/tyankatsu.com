@@ -3,10 +3,19 @@ import styles from "./page.module.css";
 
 import { getAllPosts, getPost } from "@/lib/api";
 
-export const metadata: Metadata = {
-  title: "Posts - tyankatsu.com",
-  description: "ブログ投稿一覧ページです。",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug, false);
+
+  return {
+    title: `${post.title} - tyankatsu.com`,
+    description: post.contents?.slice(0, 150) || "No description available",
+  };
+}
 
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false);
