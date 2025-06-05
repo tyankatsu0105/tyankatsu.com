@@ -26,7 +26,11 @@
   );
 }
 
-.sections {
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+.list {
   grid-area: content;
   display: flex;
   flex-direction: column;
@@ -37,25 +41,14 @@
   text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62, 0 0 10px #00ff62;
   color: #00ff62;
 }
-
-.section {
-  font-size: 20px;
-}
-.section-title {
-  font-size: 30px;
-  font-weight: bold;
-}
-.section__list {
-}
-.section__list-item {
+.list-item {
 }
 
-.section__list-item-link {
+.list-item-link {
   display: block;
 
   &:hover {
     color: #333;
     background-color: #74f74b;
-    text-shadow: 0 0 2px #333, 0 0 5px #333;
   }
 }

@@ -26,7 +26,11 @@
   );
 }
 
-.sections {
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+.list {
   grid-area: content;
   display: flex;
   flex-direction: column;
@@ -37,21 +41,15 @@
   text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62, 0 0 10px #00ff62;
   color: #00ff62;
 }
+.list-item {
+}
 
-.section {
+.list-item-link {
   font-size: 20px;
-}
-.section-title {
-  font-size: 30px;
-  font-weight: bold;
-}
-.section__list {
-}
-.section__list-item {
-}
-
-.section__list-item-link {
   display: block;
+
+  display: grid;
+  grid-template-rows: 1fr;
 
   &:hover {
     color: #333;

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "About - tyankatsu.com",
   description: "著者紹介ページです。",
 };
-export default async function Home() {
+export default async function About() {
   return (
     <>
       <div className={styles["container"]}>
