@@ -27,7 +27,9 @@ export default async function Posts() {
   return (
     <>
       <div className={styles["container"]}>
-        <h1 className={styles["heading"]}>Posts</h1>
+        <h1 className={styles["heading"]}>
+          URL 情報の型安全な管理個人的ベストプラクティス（Next.js 対応）
+        </h1>
 
         <ul className={styles["list"]}>
           {allPosts.map((post) => (

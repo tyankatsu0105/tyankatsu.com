@@ -45,6 +45,10 @@ async function fetchGraphQL(
   ).then((response) => response.json());
 }
 
+function extractPost(fetchResponse: ContentfulResponse): Posts {
+  return fetchResponse?.data?.postsCollection?.items?.[0];
+}
+
 function extractPostEntries(fetchResponse: ContentfulResponse): Posts[] {
   return fetchResponse?.data?.postsCollection?.items;
 }
@@ -64,4 +68,24 @@ export async function getAllPosts(isDraftMode: boolean): Promise<Posts[]> {
   );
 
   return extractPostEntries(entries);
+}
+
+export async function getPost(
+  slug: string,
+  isDraftMode: boolean
+): Promise<Posts> {
+  const entry = await fetchGraphQL(
+    `query {
+      postsCollection(where: { slug: "${slug}" }, preview: ${
+      isDraftMode ? "true" : "false"
+    }, limit: 1) {
+        items {
+          ${POST_GRAPHQL_FIELDS}
+        }
+      }
+    }`,
+    isDraftMode
+  );
+
+  return extractPost(entry);
 }
