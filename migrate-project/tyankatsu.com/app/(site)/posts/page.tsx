@@ -39,6 +39,7 @@ export default async function Posts() {
               <span>
                 投稿日時：{toJST(post.sys.firstPublishedAt)} 最終更新日時：
                 {toJST(post.sys.publishedAt)}
+                {"　"}
               </span>
               <span>{post.title}</span>
             </Link>

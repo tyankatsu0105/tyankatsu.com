@@ -3,17 +3,17 @@
   position: sticky;
   bottom: 0;
   overflow-x: scroll;
-  min-height: 100px;
+  min-height: 80px;
   display: block;
 
   display: block;
-  font-size: 48px;
+  font-size: 30px;
   white-space: nowrap;
   overflow-x: scroll;
 
   animation: colorshift 0.3s steps(1) infinite;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   color: #00ff62;
 
   backdrop-filter: blur(50px) contrast(0.8) saturate(0.9);
