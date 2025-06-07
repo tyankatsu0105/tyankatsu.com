@@ -31,16 +31,6 @@ const GlobalNav = () => {
 
       {isOpenNav && (
         <nav>
-          <div>
-            <button
-              type="button"
-              className={styles["global-nav__close-trigger"]}
-              onClick={handleCloseNav}
-            >
-              a
-            </button>
-          </div>
-
           <ul className={styles["global-nav__list"]}>
             <li className={styles["global-nav__list-item"]}>
               <Link
