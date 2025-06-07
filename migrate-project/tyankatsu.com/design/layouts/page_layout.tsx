@@ -13,14 +13,20 @@ const GlobalNav = () => {
   const handleOpenNav = () => {
     setIsOpenNav(true);
   };
+
+  const handleToggleNav = () => {
+    setIsOpenNav((prev) => !prev);
+  };
   return (
     <>
       <header>
         <button
           type="button"
           className={styles["global-nav__trigger"]}
-          onClick={handleOpenNav}
-        ></button>
+          onClick={handleToggleNav}
+        >
+          {isOpenNav ? "CLOSE" : "OPEN"} MENU
+        </button>
       </header>
 
       {isOpenNav && (
@@ -82,13 +88,13 @@ export function PageLayout({
 }>) {
   return (
     <>
-      <GlobalNav />
-      <main className={styles.main}>
+      <div className={styles.main}>
         <div className={styles["main-inside"]}>
+          <GlobalNav />
           <div className={styles["noise-line"]} />
-          <div className={styles["main-content"]}>{children}</div>
+          <main className={styles["main-content"]}>{children}</main>
         </div>
-      </main>
+      </div>
     </>
   );
 }

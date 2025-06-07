@@ -2,14 +2,34 @@
 }
 
 .global-nav__trigger {
-  position: fixed;
-  top: 10px;
+  position: absolute;
+  top: 5px;
   right: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #ccc;
+  color: #00ff62;
   z-index: 10;
+  cursor: pointer;
+
+  filter: contrast(0.9) blur(0.3px);
+  text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62, 0 0 10px #00ff62;
+
+  &:after {
+    content: "";
+    margin-left: 4px;
+    filter: contrast(0.9) blur(0.3px);
+    border-left: 2px solid #00ff62;
+
+    animation: blink 1.5s infinite;
+    animation-timing-function: steps(1);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .main {
