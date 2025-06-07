@@ -1,15 +1,19 @@
 import { draftMode } from "next/headers";
-
 import { getAllPosts } from "@/lib/api";
-
-import Link from "next/link";
-import styles from "./page.module.css";
 import type { Metadata } from "next";
+import {
+  Container,
+  Heading,
+  ListContainer,
+  ListItem,
+  Link,
+} from "@/design/base";
 
 export const metadata: Metadata = {
   title: "Posts - tyankatsu.com",
   description: "ブログ投稿一覧ページです。",
 };
+
 export default async function Posts() {
   const { isEnabled } = await draftMode();
   const allPosts = await getAllPosts(isEnabled);
@@ -25,29 +29,24 @@ export default async function Posts() {
   };
 
   return (
-    <>
-      <div className={styles["container"]}>
-        <h1 className={styles["heading"]}>
-          URL 情報の型安全な管理個人的ベストプラクティス（Next.js 対応）
-        </h1>
+    <Container>
+      <Heading>
+        URL 情報の型安全な管理個人的ベストプラクティス（Next.js 対応）
+      </Heading>
 
-        <ul className={styles["list"]}>
-          {allPosts.map((post) => (
-            <li key={post.slug} className={styles["list-item"]}>
-              <Link
-                href={`/posts/${post.slug}`}
-                className={styles["list-item-link"]}
-              >
-                <span>
-                  投稿日時：{toJST(post.sys.firstPublishedAt)} 最終更新日時：
-                  {toJST(post.sys.publishedAt)}
-                </span>
-                <span>{post.title}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+      <ListContainer>
+        {allPosts.map((post) => (
+          <ListItem key={post.slug}>
+            <Link href={`/posts/${post.slug}`}>
+              <span>
+                投稿日時：{toJST(post.sys.firstPublishedAt)} 最終更新日時：
+                {toJST(post.sys.publishedAt)}
+              </span>
+              <span>{post.title}</span>
+            </Link>
+          </ListItem>
+        ))}
+      </ListContainer>
+    </Container>
   );
 }

@@ -1,0 +1,21 @@
+.section {
+  font-size: 20px;
+}
+
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #00ff62;
+}
+
+.sections {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 20px;
+  overflow-y: auto;
+  filter: contrast(0.9) blur(0.5px);
+  text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62, 0 0 10px #00ff62;
+  color: #00ff62;
+}

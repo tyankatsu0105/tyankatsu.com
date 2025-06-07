@@ -1,0 +1,150 @@
+.content {
+  padding: 32px;
+  font-family: var(--font-noto-sans-jp), sans-serif;
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.content h2 {
+  font-size: 1.8em;
+  margin: 2em 0 1em;
+  color: #00ff62;
+  text-shadow: 0 0 2px #00ff62;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid rgba(0, 255, 98, 0.3);
+}
+
+.content h3 {
+  font-size: 1.5em;
+  margin: 1.8em 0 1em;
+  color: #00ff62;
+  opacity: 0.9;
+}
+
+.content h4 {
+  font-size: 1.3em;
+  margin: 1.5em 0 1em;
+  color: #00ff62;
+  opacity: 0.85;
+}
+
+.content h5,
+.content h6 {
+  font-size: 1.1em;
+  margin: 1.2em 0 0.8em;
+  color: #00ff62;
+  opacity: 0.8;
+}
+
+.content ul {
+  padding-left: 1.8em;
+  margin: 1.2em 0;
+  list-style: none;
+}
+
+.content li {
+  margin: 0.6em 0;
+  line-height: 1.8;
+  position: relative;
+}
+
+.content li::before {
+  content: ">";
+  position: absolute;
+  left: -1.5em;
+  color: #00ff62;
+  opacity: 0.8;
+}
+
+.content p {
+  margin: 1.2em 0;
+  font-size: 1em;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.content pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.2em;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+  line-height: 1.5;
+  border: 1px solid rgba(0, 255, 98, 0.15);
+  box-shadow: 0 0 8px rgba(0, 255, 98, 0.1);
+}
+
+.content a {
+  color: #00ff62;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.content a:hover {
+  text-shadow: 0 0 5px #00ff62;
+}
+
+.content blockquote {
+  border-left: 2px solid rgba(0, 255, 98, 0.4);
+  margin: 1.5em 0;
+  padding: 0.8em 0 0.8em 1.5em;
+  background: rgba(0, 255, 98, 0.05);
+}
+
+.content strong {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1.5em 0;
+  box-shadow: 0 0 15px rgba(0, 255, 98, 0.1);
+}
+
+.content table {
+  width: 100%;
+  margin: 1.5em 0;
+  border-collapse: collapse;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 255, 98, 0.15);
+}
+
+.content th,
+.content td {
+  padding: 0.8em;
+  text-align: left;
+  border: 1px solid rgba(0, 255, 98, 0.15);
+}
+
+.content th {
+  background: rgba(0, 255, 98, 0.1);
+  color: #00ff62;
+  font-weight: bold;
+}
+
+.content code:not(pre[data-code-type="shiki"] code) {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 255, 98, 0.15);
+  color: #00ff62;
+}
+
+.content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 98, 0.3),
+    transparent
+  );
+  margin: 2em 0;
+}
