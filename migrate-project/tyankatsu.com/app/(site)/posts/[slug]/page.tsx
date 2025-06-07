@@ -1,9 +1,10 @@
 import { codeToHtml, bundledLanguages } from "shiki";
 import { fromAsyncCodeToHtml } from "@shikijs/markdown-it/async";
 import MarkdownItAsync from "markdown-it-async";
-
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { getAllPosts, getPost } from "@/lib/api";
 
@@ -32,6 +33,36 @@ export async function generateStaticParams() {
 const getHighlightedMarkdown = async (params: { markdown: string }) => {
   const md = MarkdownItAsync({ breaks: true });
 
+  // リンクのカスタマイズ
+  const defaultRender =
+    md.renderer.rules.link_open ||
+    function (tokens: any[], idx: number, options: any, env: any, self: any) {
+      return self.renderToken(tokens, idx, options);
+    };
+
+  md.renderer.rules.link_open = function (
+    tokens: any[],
+    idx: number,
+    options: any,
+    env: any,
+    self: any
+  ) {
+    const token = tokens[idx];
+    const hrefIndex = token.attrIndex("href");
+    if (hrefIndex >= 0 && token.attrs) {
+      const href = token.attrs[hrefIndex][1];
+
+      // サイト内部リンクかどうかをチェック
+      const isInternalLink = /^\/|^#/.test(href);
+
+      if (!isInternalLink) {
+        token.attrPush(["target", "_blank"]); // 外部リンクの場合、target="_blank"を追加
+        token.attrPush(["rel", "noopener noreferrer"]); // セキュリティ対策
+      }
+    }
+    return defaultRender(tokens, idx, options, env, self);
+  };
+
   // カスタムスタイルの追加
   const customStyle = `
     <style>
@@ -58,7 +89,13 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
   md.use((md) => {
     const originalFence = md.renderer.rules.fence;
     if (originalFence) {
-      md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+      md.renderer.rules.fence = function (
+        tokens: any[],
+        idx: number,
+        options: any,
+        env: any,
+        self: any
+      ) {
         const token = tokens[idx];
         if (token.info) {
           const [lang, filename] = token.info.split(":");
@@ -113,6 +150,7 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
 
   const html = await md.renderAsync(params.markdown);
   return customStyle + html;
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 };
 
 export default async function Post({
