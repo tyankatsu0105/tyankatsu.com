@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 }
 
 const getHighlightedMarkdown = async (params: { markdown: string }) => {
-  const md = MarkdownItAsync();
+  const md = MarkdownItAsync({ breaks: true });
 
   md.use(
     fromAsyncCodeToHtml(codeToHtml, {
