@@ -32,6 +32,28 @@ export async function generateStaticParams() {
 const getHighlightedMarkdown = async (params: { markdown: string }) => {
   const md = MarkdownItAsync({ breaks: true });
 
+  // カスタムスタイルの追加
+  const customStyle = `
+    <style>
+      .code-block {
+        position: relative;
+        margin: 1em 0;
+      }
+      .code-filename {
+        position: absolute;
+        top: 0;
+        right: 1em;
+        padding: 0.2em 0.6em;
+        font-size: 0.9em;
+        color: #666;
+        background: #f5f5f5;
+        border-radius: 0 0 4px 4px;
+        border: 1px solid #ddd;
+        border-top: none;
+      }
+    </style>
+  `;
+
   // コードブロック処理用のプラグイン
   md.use((md) => {
     const originalFence = md.renderer.rules.fence;
@@ -39,10 +61,25 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
       md.renderer.rules.fence = function (tokens, idx, options, env, self) {
         const token = tokens[idx];
         if (token.info) {
-          // コロン以降を除去して言語部分のみを使用
-          const lang = token.info.split(":")[0];
+          const [lang, filename] = token.info.split(":");
           // サポートされている言語かチェック
           token.info = lang in bundledLanguages ? lang : "text";
+
+          // ファイル名がある場合は、コードブロックの上部にファイル名を表示
+          if (filename) {
+            const originalRendered = originalFence.call(
+              this,
+              tokens,
+              idx,
+              options,
+              env,
+              self
+            );
+            return `<div class="code-block">
+              <div class="code-filename">${filename}</div>
+              ${originalRendered}
+            </div>`;
+          }
         }
         return originalFence.call(this, tokens, idx, options, env, self);
       };
@@ -70,7 +107,7 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
   );
 
   const html = await md.renderAsync(params.markdown);
-  return html;
+  return customStyle + html;
 };
 
 export default async function Post({
