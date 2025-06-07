@@ -1,3 +1,17 @@
+.global-nav {
+}
+
+.global-nav__trigger {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ccc;
+  z-index: 10;
+}
+
 .main {
   background-color: #272c35;
   width: 100vw;

@@ -1,5 +1,79 @@
+"use client";
+
+import { useState } from "react";
 import "./globals.css";
 import styles from "./page_layout.module.css";
+import Link from "next/link";
+
+const GlobalNav = () => {
+  const [isOpenNav, setIsOpenNav] = useState(false);
+  const handleCloseNav = () => {
+    setIsOpenNav(false);
+  };
+  const handleOpenNav = () => {
+    setIsOpenNav(true);
+  };
+  return (
+    <>
+      <header>
+        <button
+          type="button"
+          className={styles["global-nav__trigger"]}
+          onClick={handleOpenNav}
+        ></button>
+      </header>
+
+      {isOpenNav && (
+        <nav>
+          <div>
+            <button
+              type="button"
+              className={styles["global-nav__close-trigger"]}
+              onClick={handleCloseNav}
+            >
+              a
+            </button>
+          </div>
+
+          <ul className={styles["global-nav__list"]}>
+            <li className={styles["global-nav__list-item"]}>
+              <Link
+                onNavigate={handleCloseNav}
+                href={{
+                  pathname: "/",
+                }}
+              >
+                Home
+              </Link>
+            </li>
+
+            <li className={styles["global-nav__list-item"]}>
+              <Link
+                onNavigate={handleCloseNav}
+                href={{
+                  pathname: "/about",
+                }}
+              >
+                About
+              </Link>
+            </li>
+
+            <li className={styles["global-nav__list-item"]}>
+              <Link
+                onNavigate={handleCloseNav}
+                href={{
+                  pathname: "/posts",
+                }}
+              >
+                Posts
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </>
+  );
+};
 
 export function PageLayout({
   children,
@@ -7,11 +81,14 @@ export function PageLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className={styles.main}>
-      <div className={styles["main-inside"]}>
-        <div className={styles["noise-line"]} />
-        <div className={styles["main-content"]}>{children}</div>
-      </div>
-    </main>
+    <>
+      <GlobalNav />
+      <main className={styles.main}>
+        <div className={styles["main-inside"]}>
+          <div className={styles["noise-line"]} />
+          <div className={styles["main-content"]}>{children}</div>
+        </div>
+      </main>
+    </>
   );
 }
