@@ -32,17 +32,42 @@ export async function generateStaticParams() {
 const getHighlightedMarkdown = async (params: { markdown: string }) => {
   const md = MarkdownItAsync({ breaks: true });
 
+  // コードブロック処理用のプラグイン
+  md.use((md) => {
+    const originalFence = md.renderer.rules.fence;
+    if (originalFence) {
+      md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+        const token = tokens[idx];
+        if (token.info) {
+          // コロン以降を除去して言語部分のみを使用
+          token.info = token.info.split(":")[0];
+        }
+        return originalFence.call(this, tokens, idx, options, env, self);
+      };
+    }
+  });
+
+  // シンタックスハイライトの適用
   md.use(
-    fromAsyncCodeToHtml(codeToHtml, {
-      themes: {
-        light: "gruvbox-dark-hard",
-        dark: "gruvbox-dark-hard",
+    fromAsyncCodeToHtml(
+      async (code, opts) => {
+        const lang =
+          typeof opts === "string" ? opts : (opts.lang as string) || "text";
+        return codeToHtml(code, {
+          lang,
+          theme: "gruvbox-dark-hard",
+        });
       },
-    })
+      {
+        themes: {
+          light: "gruvbox-dark-hard",
+          dark: "gruvbox-dark-hard",
+        },
+      }
+    )
   );
 
   const html = await md.renderAsync(params.markdown);
-
   return html;
 };
 
