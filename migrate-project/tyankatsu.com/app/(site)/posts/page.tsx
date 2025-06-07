@@ -30,9 +30,7 @@ export default async function Posts() {
 
   return (
     <Container>
-      <Heading>
-        URL 情報の型安全な管理個人的ベストプラクティス（Next.js 対応）
-      </Heading>
+      <Heading>Posts</Heading>
 
       <ListContainer>
         {allPosts.map((post) => (
