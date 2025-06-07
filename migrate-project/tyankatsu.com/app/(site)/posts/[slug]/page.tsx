@@ -1,5 +1,6 @@
-import type { BundledLanguage } from "shiki";
 import { codeToHtml } from "shiki";
+import { fromAsyncCodeToHtml } from "@shikijs/markdown-it/async";
+import MarkdownItAsync from "markdown-it-async";
 
 import type { Metadata } from "next";
 import styles from "./page.module.css";
@@ -29,39 +30,20 @@ export async function generateStaticParams() {
 }
 
 const getHighlightedMarkdown = async (params: { markdown: string }) => {
-  const codeBlockRegex = /```(\w+)\n([\s\S]*?)```/g;
+  const md = MarkdownItAsync();
 
-  // マッチした全てのコードブロックを抽出
-  const codeBlocks: { lang: BundledLanguage; code: string }[] = [];
-  const replaced =
-    params.markdown.replace(
-      codeBlockRegex,
-      (_, lang: BundledLanguage, code: string) => {
-        codeBlocks.push({ lang, code });
-        // プレースホルダーを返す
-        return `___CODE_BLOCK_${codeBlocks.length - 1}___`;
-      }
-    ) ?? "";
-
-  // 全てのコードブロックを非同期でハイライト
-  const highlightedBlocks = await Promise.all(
-    codeBlocks.map(async ({ lang, code }) => {
-      try {
-        return await codeToHtml(code, { lang, theme: "github-dark" });
-      } catch {
-        return `<pre><code>${code}</code></pre>`;
-      }
+  md.use(
+    fromAsyncCodeToHtml(codeToHtml, {
+      themes: {
+        light: "monokai",
+        dark: "monokai",
+      },
     })
   );
 
-  // プレースホルダーを実際のハイライトされたコードで置換
-  const finalContent = highlightedBlocks.reduce(
-    (content, block, index) =>
-      content.replace(`___CODE_BLOCK_${index}___`, block),
-    replaced
-  );
+  const html = await md.renderAsync(params.markdown);
 
-  return finalContent;
+  return html;
 };
 
 export default async function Post({
