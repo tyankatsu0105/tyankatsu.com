@@ -2,7 +2,8 @@ import { codeToHtml, bundledLanguages } from "shiki";
 import { fromAsyncCodeToHtml } from "@shikijs/markdown-it/async";
 import MarkdownItAsync from "markdown-it-async";
 import type { Metadata } from "next";
-import { Container, Content, Heading } from "@/design/base";
+import { Container, Heading } from "@/design/base";
+import styles from "./page.module.css";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -168,9 +169,9 @@ export default async function Post({
   return (
     <Container>
       <Heading>{post.title}</Heading>
-      <Content>
+      <div className={styles["content"]}>
         <div dangerouslySetInnerHTML={{ __html: contents }} />
-      </Content>
+      </div>
     </Container>
   );
 }
