@@ -1,4 +1,4 @@
-import { codeToHtml } from "shiki";
+import { codeToHtml, bundledLanguages } from "shiki";
 import { fromAsyncCodeToHtml } from "@shikijs/markdown-it/async";
 import MarkdownItAsync from "markdown-it-async";
 
@@ -40,7 +40,9 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
         const token = tokens[idx];
         if (token.info) {
           // コロン以降を除去して言語部分のみを使用
-          token.info = token.info.split(":")[0];
+          const lang = token.info.split(":")[0];
+          // サポートされている言語かチェック
+          token.info = lang in bundledLanguages ? lang : "text";
         }
         return originalFence.call(this, tokens, idx, options, env, self);
       };
