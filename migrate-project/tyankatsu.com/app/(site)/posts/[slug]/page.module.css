@@ -125,6 +125,56 @@
     color: rgba(255, 255, 255, 0.95);
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
   }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1.5em 0;
+    box-shadow: 0 0 15px rgba(0, 255, 98, 0.1);
+  }
+
+  table {
+    width: 100%;
+    margin: 1.5em 0;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 255, 98, 0.15);
+  }
+
+  th,
+  td {
+    padding: 0.8em;
+    text-align: left;
+    border: 1px solid rgba(0, 255, 98, 0.15);
+  }
+
+  th {
+    background: rgba(0, 255, 98, 0.1);
+    color: #00ff62;
+    font-weight: bold;
+  }
+
+  code:not(pre[data-code-type="shiki"] code) {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 98, 0.15);
+    color: #00ff62;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 98, 0.3),
+      transparent
+    );
+    margin: 2em 0;
+  }
 }
 
 @keyframes colorshift {

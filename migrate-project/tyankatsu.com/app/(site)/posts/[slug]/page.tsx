@@ -92,10 +92,15 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
       async (code, opts) => {
         const lang =
           typeof opts === "string" ? opts : (opts.lang as string) || "text";
-        return codeToHtml(code, {
+        const html = await codeToHtml(code, {
           lang,
           theme: "gruvbox-dark-hard",
         });
+        // data-code-type="shiki"属性を追加
+        return html.replace(
+          '<pre class="shiki',
+          '<pre data-code-type="shiki" class="shiki'
+        );
       },
       {
         themes: {
