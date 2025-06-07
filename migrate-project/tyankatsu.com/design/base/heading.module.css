@@ -5,9 +5,7 @@
   overflow-x: scroll;
   min-height: 100px;
   display: block;
-}
 
-.heading__text {
   display: block;
   font-size: 48px;
   white-space: nowrap;

@@ -36,10 +36,13 @@
   padding: 32px;
   font-family: var(--font-noto-sans-jp), sans-serif;
   max-width: 850px;
+  width: 100%;
   margin: 0 auto;
   line-height: 1.9;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.9);
+  overflow-wrap: break-word;
+  word-break: break-word;
 
   h2 {
     font-size: 1.8em;
@@ -103,6 +106,8 @@
     line-height: 1.5;
     border: 1px solid rgba(0, 255, 98, 0.15);
     box-shadow: 0 0 8px rgba(0, 255, 98, 0.1);
+    max-width: 100%;
+    white-space: pre-wrap;
   }
 
   a {
@@ -140,6 +145,9 @@
     border-collapse: collapse;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(0, 255, 98, 0.15);
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   th,

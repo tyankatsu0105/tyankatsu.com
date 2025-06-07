@@ -10,8 +10,6 @@ type Props = {
 export const Heading = ({ children, className, tag = "h1" }: Props) => {
   const Tag = tag;
   return (
-    <Tag className={`${styles.heading} ${className ?? ""}`}>
-      <span className={styles.heading__text}>{children}</span>
-    </Tag>
+    <Tag className={`${styles.heading} ${className ?? ""}`}>{children}</Tag>
   );
 };
