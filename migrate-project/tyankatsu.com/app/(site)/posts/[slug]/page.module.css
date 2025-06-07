@@ -33,15 +33,30 @@
   font-weight: bold;
 }
 .content {
-  grid-area: content;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
   padding: 20px;
-  overflow-y: auto;
-  /* filter: contrast(0.9) blur(0.5px);
-  text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62, 0 0 10px #00ff62;
-  color: #00ff62; */
+  font-family: var(--font-noto-sans-jp), sans-serif;
+
+  h2 {
+  }
+  h3 {
+  }
+  h4 {
+  }
+  h5 {
+  }
+  h6 {
+  }
+
+  ul {
+  }
+  li {
+  }
+
+  p {
+  }
+
+  pre {
+  }
 }
 
 @keyframes colorshift {

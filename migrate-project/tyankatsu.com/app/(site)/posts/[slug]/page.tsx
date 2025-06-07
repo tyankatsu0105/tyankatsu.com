@@ -35,8 +35,8 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
   md.use(
     fromAsyncCodeToHtml(codeToHtml, {
       themes: {
-        light: "monokai",
-        dark: "monokai",
+        light: "gruvbox-dark-hard",
+        dark: "gruvbox-dark-hard",
       },
     })
   );

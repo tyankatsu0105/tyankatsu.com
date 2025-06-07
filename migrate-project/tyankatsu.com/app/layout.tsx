@@ -1,9 +1,15 @@
 import "the-new-css-reset/css/reset.css";
-import { DotGothic16 } from "next/font/google";
+import { DotGothic16, Noto_Sans_JP } from "next/font/google";
 
 const geistDotGothic16 = DotGothic16({
   variable: "--font-geist-dot-gothic-16",
   weight: "400",
+  subsets: ["latin"],
+});
+
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -14,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={geistDotGothic16.variable}>{children}</body>
+      <body className={`${geistDotGothic16.variable} ${notoSansJP.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
