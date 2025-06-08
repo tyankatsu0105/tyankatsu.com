@@ -30,7 +30,7 @@ const GlobalNav = () => {
       </header>
 
       {isOpenNav && (
-        <nav>
+        <nav className={styles["global-nav"]}>
           <ul className={styles["global-nav__list"]}>
             <li className={styles["global-nav__list-item"]}>
               <Link
