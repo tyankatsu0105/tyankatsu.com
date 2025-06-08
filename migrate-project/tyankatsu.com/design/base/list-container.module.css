@@ -2,7 +2,7 @@
   grid-area: content;
   display: flex;
   flex-direction: column;
-  padding: 30px 20px 20px;
+  padding: 0 20px 20px;
   overflow-y: auto;
   filter: contrast(0.9) blur(0.5px);
   text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62, 0 0 10px #00ff62;

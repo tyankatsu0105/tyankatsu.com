@@ -5,4 +5,5 @@
     "heading";
   grid-template-rows: 1fr auto;
   height: 100%;
+  overflow-y: scroll;
 }
