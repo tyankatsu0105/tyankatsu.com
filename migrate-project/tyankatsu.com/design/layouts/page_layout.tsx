@@ -34,6 +34,7 @@ const GlobalNav = () => {
           <ul className={styles["global-nav__list"]}>
             <li className={styles["global-nav__list-item"]}>
               <Link
+                className={styles["global-nav__list-item-link"]}
                 onNavigate={handleCloseNav}
                 href={{
                   pathname: "/",
@@ -45,6 +46,7 @@ const GlobalNav = () => {
 
             <li className={styles["global-nav__list-item"]}>
               <Link
+                className={styles["global-nav__list-item-link"]}
                 onNavigate={handleCloseNav}
                 href={{
                   pathname: "/about",
@@ -56,6 +58,7 @@ const GlobalNav = () => {
 
             <li className={styles["global-nav__list-item"]}>
               <Link
+                className={styles["global-nav__list-item-link"]}
                 onNavigate={handleCloseNav}
                 href={{
                   pathname: "/posts",

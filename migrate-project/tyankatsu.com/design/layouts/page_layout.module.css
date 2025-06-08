@@ -46,6 +46,39 @@
 .global-nav__list {
   padding: 20px;
   border: #00ff62 1px solid;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0, 255, 98, 0.3),
+    inset 0 0 20px rgba(0, 255, 98, 0.1);
+  filter: contrast(0.9) blur(0.3px);
+  position: relative;
+  overflow: hidden;
+}
+
+.global-nav__list-item-link {
+  color: #00ff62;
+  text-decoration: none;
+  text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62;
+  transition: all 0.3s ease;
+  display: block;
+  padding: 8px 0;
+  filter: contrast(0.9) blur(0.3px);
+  position: relative;
+}
+
+.global-nav__list-item-link:hover {
+  text-shadow: 0 0 2px #00ff62, 0 0 5px #00ff62, 0 0 10px #00ff62;
+  transform: scale(1.05);
+}
+
+.global-nav__list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 255, 98, 0.05), transparent 70%);
+  pointer-events: none;
 }
 
 .main {
