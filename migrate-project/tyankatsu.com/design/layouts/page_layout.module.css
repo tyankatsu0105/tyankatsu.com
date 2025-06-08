@@ -29,7 +29,7 @@
   }
 }
 
-.global-nav__list {
+.global-nav {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -38,6 +38,14 @@
   z-index: 2;
 
   background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-nav__list {
+  padding: 20px;
+  border: #00ff62 1px solid;
 }
 
 .main {
