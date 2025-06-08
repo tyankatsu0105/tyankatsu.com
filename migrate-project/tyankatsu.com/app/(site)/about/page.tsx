@@ -3,11 +3,10 @@ import {
   Container,
   Heading,
   Link,
-  ListContainer,
-  ListItem,
   Section,
   SectionContainer,
 } from "@/design/base";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "About - tyankatsu.com",
@@ -21,78 +20,107 @@ export default async function About() {
 
       <SectionContainer>
         <Section title="Work">
-          <ListContainer>
-            <ListItem>
+          <ul className={styles.section__list}>
+            <li className={styles["section__list-item"]}>
               Front-end Engineer: Linc&apos;well - (December 2022 - Present)
-            </ListItem>
-            <ListItem>
+            </li>
+            <li className={styles["section__list-item"]}>
               Front-end Engineer: HRBrain - (July 2020 - October 2022)
-            </ListItem>
-            <ListItem>
+            </li>
+            <li className={styles["section__list-item"]}>
               Front-end Engineer: VEGA corporation - (July 2018 - June 2020)
-            </ListItem>
-            <ListItem>
+            </li>
+            <li className={styles["section__list-item"]}>
               Web Designer: Japanese company - (2016 - June 2018)
-            </ListItem>
-          </ListContainer>
+            </li>
+          </ul>
         </Section>
 
         <Section title="Internet">
-          <ListContainer>
-            <ListItem>
-              <Link href="https://x.com/tyankatsu5" target="_blank">
+          <ul className={styles.section__list}>
+            <li className={styles["section__list-item"]}>
+              <Link
+                href="https://x.com/tyankatsu5"
+                target="_blank"
+                className={styles["section__list-item-link"]}
+              >
                 X
               </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="https://github.com/tyankatsu0105" target="_blank">
+            </li>
+            <li className={styles["section__list-item"]}>
+              <Link
+                href="https://github.com/tyankatsu0105"
+                target="_blank"
+                className={styles["section__list-item-link"]}
+              >
                 GitHub
               </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="https://www.npmjs.com/~tyankatsu0105" target="_blank">
+            </li>
+            <li className={styles["section__list-item"]}>
+              <Link
+                href="https://www.npmjs.com/~tyankatsu0105"
+                target="_blank"
+                className={styles["section__list-item-link"]}
+              >
                 npm
               </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="https://speakerdeck.com/tyankatsu" target="_blank">
+            </li>
+            <li className={styles["section__list-item"]}>
+              <Link
+                href="https://speakerdeck.com/tyankatsu"
+                target="_blank"
+                className={styles["section__list-item-link"]}
+              >
                 Speaker Deck
               </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="https://katsulog.netlify.app/" target="_blank">
+            </li>
+            <li className={styles["section__list-item"]}>
+              <Link
+                href="https://katsulog.netlify.app/"
+                target="_blank"
+                className={styles["section__list-item-link"]}
+              >
                 katsulog
               </Link>
-            </ListItem>
-          </ListContainer>
+            </li>
+          </ul>
         </Section>
 
         <Section title="Book">
-          <ListContainer>
-            <ListItem>
+          <ul className={styles.section__list}>
+            <li className={styles["section__list-item"]}>
               <Link
                 href="https://ponday.booth.pm/items/1316963"
                 target="_blank"
+                className={styles["section__list-item-link"]}
               >
                 チームマネジメントとGridsome／VuePress
               </Link>
-            </ListItem>
-          </ListContainer>
+            </li>
+          </ul>
         </Section>
 
         <Section title="Community">
-          <ListContainer>
-            <ListItem>
-              <Link href="https://aniken.connpass.com/" target="_blank">
+          <ul className={styles.section__list}>
+            <li className={styles["section__list-item"]}>
+              <Link
+                href="https://aniken.connpass.com/"
+                target="_blank"
+                className={styles["section__list-item-link"]}
+              >
                 アニメーション研究会
               </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="https://ffs.connpass.com/" target="_blank">
+            </li>
+            <li className={styles["section__list-item"]}>
+              <Link
+                href="https://ffs.connpass.com/"
+                target="_blank"
+                className={styles["section__list-item-link"]}
+              >
                 Frontend-Fukuoka.spec
               </Link>
-            </ListItem>
-          </ListContainer>
+            </li>
+          </ul>
         </Section>
       </SectionContainer>
     </Container>

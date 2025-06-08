@@ -1,13 +1,8 @@
 import { draftMode } from "next/headers";
 import { getAllPosts } from "@/lib/api";
 import type { Metadata } from "next";
-import {
-  Container,
-  Heading,
-  ListContainer,
-  ListItem,
-  Link,
-} from "@/design/base";
+import { Container, Heading, Link } from "@/design/base";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Posts - tyankatsu.com",
@@ -32,10 +27,13 @@ export default async function Posts() {
     <Container>
       <Heading>Posts</Heading>
 
-      <ListContainer>
+      <ul className={styles.list}>
         {allPosts.map((post) => (
-          <ListItem key={post.slug}>
-            <Link href={`/posts/${post.slug}`}>
+          <li key={post.slug} className={styles["list-item"]}>
+            <Link
+              href={`/posts/${post.slug}`}
+              className={styles["list-item-link"]}
+            >
               <span>
                 投稿日時：{toJST(post.sys.firstPublishedAt)} 最終更新日時：
                 {toJST(post.sys.publishedAt)}
@@ -43,9 +41,9 @@ export default async function Posts() {
               </span>
               <span>{post.title}</span>
             </Link>
-          </ListItem>
+          </li>
         ))}
-      </ListContainer>
+      </ul>
     </Container>
   );
 }
