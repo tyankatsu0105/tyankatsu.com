@@ -1,43 +1,29 @@
 {
   "name": "tyankatsu.com",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "precommit": "lint-staged",
-    "commit": "git-cz",
-    "build": "gridsome build",
-    "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@adapttive/vue-markdown": "^4.0.1",
-    "@gridsome/plugin-critical": "^0.2.0",
-    "@gridsome/plugin-sitemap": "^0.4.0",
-    "@gridsome/source-contentful": "^0.6.0",
-    "axios": "^0.21.1",
-    "babel-runtime": "^6.26.0",
-    "gridsome": "^0.7.0",
-    "gridsome-plugin-feed": "^1.0.2",
-    "gridsome-plugin-gtm": "^0.1.1",
-    "vuex": "^3.0.0"
+    "@shikijs/markdown-it": "3.6.0",
+    "markdown-it-async": "2.2.0",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "shiki": "3.5.0",
+    "the-new-css-reset": "1.11.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "commitizen": "^4.2.5",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-gridsome": "^1.6.2",
-    "eslint-plugin-vue": "^9.3.0",
-    "lint-staged": "^13.0.3",
-    "sass": "^1.89.0",
-    "postcss-loader": "^7.0.1",
-    "prettier": "^2.7.1",
-    "sass-loader": "^10.0.0",
-    "sass-resources-loader": "^2.2.5",
-    "shiki": "0.11.1",
-    "stylelint": "^14.10.0",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-config-sass-guidelines": "^9.0.1"
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "typescript": "^5"
   }
 }
