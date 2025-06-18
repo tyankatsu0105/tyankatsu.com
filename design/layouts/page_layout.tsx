@@ -16,7 +16,7 @@ const GlobalNav = () => {
   };
   return (
     <>
-      <header>
+      <header className={styles["header"]}>
         <button
           type="button"
           className={styles["global-nav__trigger"]}
