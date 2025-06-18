@@ -155,6 +155,25 @@
   }
 }
 
+.code-block {
+  margin: 2em 0 1em;
+  border-radius: 0.5em;
+}
+
+.code-filename {
+  padding: 0.2em 1em;
+  font-size: 0.7em;
+  color: #d4d4d4;
+  border: 1px solid #333;
+  border-bottom: none;
+  border-radius: 0.5em 0.5em 0 0;
+  display: inline-block;
+
+  & + pre[data-code-type="shiki"] {
+    margin-top: 0;
+  }
+}
+
 @keyframes colorshift {
   0%,
   96% {

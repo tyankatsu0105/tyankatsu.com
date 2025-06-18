@@ -66,28 +66,6 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
     return defaultRender(tokens, idx, options, env, self);
   };
 
-  // カスタムスタイルの追加
-  const customStyle = `
-    <style>
-      .code-block {
-        position: relative;
-        margin: 1em 0;
-      }
-      .code-filename {
-        position: absolute;
-        top: 0;
-        right: 1em;
-        padding: 0.2em 0.6em;
-        font-size: 0.9em;
-        color: #666;
-        background: #f5f5f5;
-        border-radius: 0 0 4px 4px;
-        border: 1px solid #ddd;
-        border-top: none;
-      }
-    </style>
-  `;
-
   // コードブロック処理用のプラグイン
   md.use((md) => {
     const originalFence = md.renderer.rules.fence;
@@ -115,8 +93,8 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
               env,
               self
             );
-            return `<div class="code-block">
-              <div class="code-filename">${filename}</div>
+            return `<div class="${styles["code-block"]}">
+              <div class="${styles["code-filename"]}">${filename}</div>
               ${originalRendered}
             </div>`;
           }
@@ -152,7 +130,7 @@ const getHighlightedMarkdown = async (params: { markdown: string }) => {
   );
 
   const html = await md.renderAsync(params.markdown);
-  return customStyle + html;
+  return html;
   /* eslint-enable @typescript-eslint/no-explicit-any */
 };
 
