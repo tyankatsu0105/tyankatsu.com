@@ -22,10 +22,6 @@ export async function generateMetadata({
   return {
     title: `${post.title} - tyankatsu.com`,
     description: post.contents?.slice(0, 150) || "No description available",
-    // openGraph: {
-    //   images: [`https://tyankatsu-com-og-image.vercel.app/${post.title}.png`],
-    //   type: "",
-    // },
   };
 }
 
