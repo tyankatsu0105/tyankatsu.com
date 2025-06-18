@@ -2,6 +2,8 @@ import { codeToHtml, bundledLanguages } from "shiki";
 import { fromAsyncCodeToHtml } from "@shikijs/markdown-it/async";
 import MarkdownItAsync from "markdown-it-async";
 import type { Metadata } from "next";
+import Image from "next/image";
+
 import { Container, Heading } from "@/design/base";
 import styles from "./page.module.css";
 
@@ -20,6 +22,10 @@ export async function generateMetadata({
   return {
     title: `${post.title} - tyankatsu.com`,
     description: post.contents?.slice(0, 150) || "No description available",
+    // openGraph: {
+    //   images: [`https://tyankatsu-com-og-image.vercel.app/${post.title}.png`],
+    //   type: "",
+    // },
   };
 }
 
@@ -170,6 +176,16 @@ export default async function Post({
     <Container>
       <Heading>{post.title}</Heading>
       <div className={styles["content"]}>
+        {post.eyecatch && (
+          <Image
+            src={post.eyecatch.url}
+            alt={post.title}
+            width={post.eyecatch.width}
+            height={post.eyecatch.height}
+            loading="lazy"
+          />
+        )}
+
         <div dangerouslySetInnerHTML={{ __html: contents }} />
       </div>
     </Container>

@@ -10,9 +10,6 @@ const GlobalNav = () => {
   const handleCloseNav = () => {
     setIsOpenNav(false);
   };
-  const handleOpenNav = () => {
-    setIsOpenNav(true);
-  };
 
   const handleToggleNav = () => {
     setIsOpenNav((prev) => !prev);

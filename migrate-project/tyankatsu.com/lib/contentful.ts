@@ -1,4 +1,4 @@
-import { Entry, Asset } from "contentful";
+import { Entry } from "contentful";
 export const Category = "category";
 export interface Category {
   //Category
@@ -7,13 +7,19 @@ export interface Category {
   readonly title: string;
 }
 
+type Image = {
+  readonly url: string;
+  readonly width: number;
+  readonly height: number;
+};
+
 export const Posts = "posts";
 export interface Posts {
   //Posts
   /* ブログ投稿 */
   readonly category: Entry<Category>;
   readonly contents?: string;
-  readonly eyecatch?: Asset;
+  readonly eyecatch?: Image;
   readonly slug: string;
   readonly tags: ReadonlyArray<Entry<Tag>>;
   readonly title: string;
