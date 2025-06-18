@@ -42,6 +42,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
           width: "100%",
           height: "100%",
           padding: "60px",
+          letterSpacing: "0.1em",
         }}
       >
         <div
@@ -69,11 +70,10 @@ export default async function Image({ params }: { params: { slug: string } }) {
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
+      ...size,
       fonts: [
         {
-          name: "Geist",
+          name: "DotGothic16",
           data: await loadGoogleFont(
             "DotGothic16",
             `${post.title} tyankatsu.com`
