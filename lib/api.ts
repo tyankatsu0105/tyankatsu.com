@@ -23,11 +23,22 @@ type ContentfulResponse = {
   };
 };
 
+import NodeCache from "node-cache";
+
+const cache = new NodeCache({ stdTTL: 300 }); // Cache for 5 minutes
+
 async function fetchGraphQL(
   query: string,
   preview = false
 ): Promise<ContentfulResponse> {
-  return fetch(
+  const cacheKey = `${preview ? "preview" : "live"}:${query}`;
+  const cachedResponse = cache.get(cacheKey);
+
+  if (cachedResponse) {
+    return cachedResponse as ContentfulResponse;
+  }
+
+  const response = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
       method: "POST",
@@ -42,7 +53,10 @@ async function fetchGraphQL(
       body: JSON.stringify({ query }),
       next: { tags: ["posts"] },
     }
-  ).then((response) => response.json());
+  ).then((res) => res.json());
+
+  cache.set(cacheKey, response);
+  return response;
 }
 
 function extractPost(fetchResponse: ContentfulResponse): Posts {
