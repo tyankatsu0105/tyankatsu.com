@@ -28,8 +28,31 @@ async function loadGoogleFont(font: string, text: string) {
 }
 
 export async function generateImage(slug: string) {
-  const post = await getPost(slug, false);
+  // Extend globalThis with a cache type
+  interface GlobalCache {
+    postCache?: Record<string, { title: string; slug: string }>;
+  }
+  const globalCache = globalThis as typeof globalThis & GlobalCache;
 
+  // Initialize cache if not present
+  if (!globalCache.postCache) {
+    globalCache.postCache = {};
+  }
+
+  // Cache key for the post
+  const cacheKey = `post-${slug}`;
+  let post = globalCache.postCache[cacheKey];
+
+  if (!post) {
+    // Fetch post data
+    const fetchedPost = await getPost(slug, false);
+
+    // Cache the post data
+    globalCache.postCache[cacheKey] = fetchedPost;
+    post = fetchedPost;
+  }
+
+  // Return the image response
   return new ImageResponse(
     (
       <div
@@ -78,10 +101,7 @@ export async function generateImage(slug: string) {
       fonts: [
         {
           name: "DotGothic16",
-          data: await loadGoogleFont(
-            "DotGothic16",
-            `${post.title} tyankatsu.com`
-          ),
+          data: await loadGoogleFont("DotGothic16", `${slug} tyankatsu.com`),
           style: "normal",
         },
       ],
