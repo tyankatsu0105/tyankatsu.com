@@ -15,6 +15,7 @@ const GlobalNav = () => {
 
   const handleToggleNav = () => {
     setIsOpenGlobalNav((prev) => !prev);
+    handleCloseSNSNav();
   };
 
   const handleCloseSNSNav = () => {
