@@ -1,5 +1,8 @@
 import { getPost } from "@/lib/api";
 import { ImageResponse } from "next/og";
+import * as fs from "node:fs/promises";
+
+export const runtime = "edge";
 
 export const size = {
   width: 1200,
@@ -8,38 +11,11 @@ export const size = {
 
 export const contentType = "image/png";
 
-import fs from "fs";
-import path from "path";
-
-const fontCachePath = path.join(process.cwd(), "public", "DotGothic16.ttf");
-
-async function loadGoogleFont(font: string, text: string) {
-  if (fs.existsSync(fontCachePath)) {
-    return fs.readFileSync(fontCachePath);
-  }
-
-  const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(
-    text
-  )}`;
-  const css = await (await fetch(url)).text();
-  const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/
-  );
-
-  if (resource) {
-    const response = await fetch(resource[1]);
-    if (response.status == 200) {
-      const fontData = await response.arrayBuffer();
-      fs.writeFileSync(fontCachePath, Buffer.from(fontData));
-      return fontData;
-    }
-  }
-
-  throw new Error("failed to load font data");
-}
-
 export async function generateImage(slug: string) {
   const post = await getPost(slug, false);
+  const myFontData = await fs.readFile(
+    process.cwd() + "/public/DotGothic16.ttf"
+  );
 
   return new ImageResponse(
     (
@@ -89,7 +65,7 @@ export async function generateImage(slug: string) {
       fonts: [
         {
           name: "DotGothic16",
-          data: await loadGoogleFont("DotGothic16", ""),
+          data: myFontData,
           style: "normal",
         },
       ],
