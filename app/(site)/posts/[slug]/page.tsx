@@ -22,6 +22,7 @@ export async function generateMetadata({
   return {
     title: `${post.title} - tyankatsu.com`,
     description: post.contents?.slice(0, 150) || "No description available",
+    metadataBase: new URL("https://tyankatsu.com"),
   };
 }
 

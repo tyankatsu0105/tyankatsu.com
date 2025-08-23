@@ -5,6 +5,7 @@ import { Container, Heading, Link } from "@/design/base";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tyankatsu.com"),
   title: "Posts - tyankatsu.com",
   description: "ブログ投稿一覧ページです。",
 };

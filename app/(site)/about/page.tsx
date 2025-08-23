@@ -9,6 +9,7 @@ import {
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tyankatsu.com"),
   title: "About - tyankatsu.com",
   description: "著者紹介ページです。",
 };

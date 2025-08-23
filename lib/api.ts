@@ -67,7 +67,16 @@ export async function getAllPosts(isDraftMode: boolean): Promise<Posts[]> {
     isDraftMode
   );
 
-  return extractPostEntries(entries);
+  if (!entries || !entries.data || !entries.data.postsCollection) {
+    throw new Error("Failed to fetch posts: Contentful response is invalid.");
+  }
+
+  const items = extractPostEntries(entries);
+  if (!items || items.length === 0) {
+    throw new Error("No posts found in the Contentful response.");
+  }
+
+  return items;
 }
 
 export async function getPost(

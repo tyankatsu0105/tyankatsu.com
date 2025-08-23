@@ -1,5 +1,6 @@
 import "the-new-css-reset/css/reset.css";
 import { DotGothic16, Noto_Sans_JP } from "next/font/google";
+import type { Metadata } from "next";
 
 const geistDotGothic16 = DotGothic16({
   variable: "--font-geist-dot-gothic-16",
@@ -12,6 +13,10 @@ const notoSansJP = Noto_Sans_JP({
   weight: ["400", "700"],
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://tyankatsu.com"),
+};
 
 export default function RootLayout({
   children,
