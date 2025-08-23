@@ -8,7 +8,16 @@ export const size = {
 
 export const contentType = "image/png";
 
+import fs from "fs";
+import path from "path";
+
+const fontCachePath = path.join(process.cwd(), "public", "DotGothic16.ttf");
+
 async function loadGoogleFont(font: string, text: string) {
+  if (fs.existsSync(fontCachePath)) {
+    return fs.readFileSync(fontCachePath);
+  }
+
   const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(
     text
   )}`;
@@ -20,7 +29,9 @@ async function loadGoogleFont(font: string, text: string) {
   if (resource) {
     const response = await fetch(resource[1]);
     if (response.status == 200) {
-      return await response.arrayBuffer();
+      const fontData = await response.arrayBuffer();
+      fs.writeFileSync(fontCachePath, Buffer.from(fontData));
+      return fontData;
     }
   }
 
@@ -78,10 +89,7 @@ export async function generateImage(slug: string) {
       fonts: [
         {
           name: "DotGothic16",
-          data: await loadGoogleFont(
-            "DotGothic16",
-            `${post.title} tyankatsu.com`
-          ),
+          data: await loadGoogleFont("DotGothic16", ""),
           style: "normal",
         },
       ],
