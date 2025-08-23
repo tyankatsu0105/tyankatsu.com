@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 import styles from "./page_layout.module.css";
 import Link from "next/link";
@@ -8,6 +9,9 @@ import Image from "next/image";
 
 const GlobalNav = () => {
   const [isOpenGlobalNav, setIsOpenGlobalNav] = useState(false);
+  const pathname = usePathname();
+  const currentUrl = `https://tyankatsu.com${pathname}`;
+  const shareText = "Check out this page!";
 
   const handleCloseNav = () => {
     setIsOpenGlobalNav(false);
@@ -22,37 +26,46 @@ const GlobalNav = () => {
       <header className={styles["header"]}>
         <div className={styles["social-links"]}>
           <Link
-            href="https://twitter.com/yourprofile"
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              shareText
+            )}&url=${encodeURIComponent(currentUrl)}`}
             className={styles["social-link"]}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            <Image src="/social-x.svg" alt="Twitter" width={20} height={20} />
-          </Link>
-          <Link
-            href="https://b.hatena.ne.jp/entry/"
-            className={styles["social-link"]}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-hatena-bookmark-layout="touch"
           >
             <Image
-              src="/social-bluesky.svg"
-              alt="ブルースカイ"
+              src="/social-x.svg"
+              alt="X(Twitter)での共有"
               width={20}
               height={20}
             />
           </Link>
           <Link
-            href="https://b.hatena.ne.jp/entry/"
+            href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
+              `${shareText} ${currentUrl}`
+            )}`}
             className={styles["social-link"]}
             target="_blank"
             rel="noopener noreferrer"
-            data-hatena-bookmark-layout="touch"
+          >
+            <Image
+              src="/social-bluesky.svg"
+              alt="Blueskyでの共有"
+              width={20}
+              height={20}
+            />
+          </Link>
+          <Link
+            href={`https://b.hatena.ne.jp/entry/${encodeURIComponent(
+              currentUrl
+            )}`}
+            className={styles["social-link"]}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <Image
               src="/social-hatena.png"
-              alt="はてなブックマーク"
+              alt="はてなブックマークでの共有"
               width={20}
               height={20}
             />
