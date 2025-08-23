@@ -8,34 +8,42 @@ import Image from "next/image";
 
 const GlobalNav = () => {
   const [isOpenGlobalNav, setIsOpenGlobalNav] = useState(false);
-  const [isOpenSNSNav, setIsOpenSNSNav] = useState(false);
+
   const handleCloseNav = () => {
     setIsOpenGlobalNav(false);
   };
 
   const handleToggleNav = () => {
     setIsOpenGlobalNav((prev) => !prev);
-    handleCloseSNSNav();
-  };
-
-  const handleCloseSNSNav = () => {
-    setIsOpenSNSNav(false);
-  };
-
-  const handleToggleSNSNav = () => {
-    setIsOpenSNSNav((prev) => !prev);
   };
 
   return (
     <>
       <header className={styles["header"]}>
-        <button
-          type="button"
-          className={styles["sns-nav__trigger"]}
-          onClick={handleToggleSNSNav}
-        >
-          <Image src="/sns.svg" alt="" width={25} height={25} />
-        </button>
+        <div className={styles["social-links"]}>
+          <Link
+            href="https://twitter.com/yourprofile"
+            className={styles["social-link"]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src="/social-x.svg" alt="Twitter" width={25} height={25} />
+          </Link>
+          <Link
+            href="https://b.hatena.ne.jp/entry/"
+            className={styles["social-link"]}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-hatena-bookmark-layout="touch"
+          >
+            <Image
+              src="/social-hatena.png"
+              alt="はてなブックマーク"
+              width={25}
+              height={25}
+            />
+          </Link>
+        </div>
         <button
           type="button"
           className={styles["global-nav__trigger"]}
@@ -44,24 +52,6 @@ const GlobalNav = () => {
           {isOpenGlobalNav ? "CLOSE" : "OPEN"} MENU
         </button>
       </header>
-
-      {isOpenSNSNav && (
-        <nav className={styles["sns-nav"]}>
-          <ul className={styles["sns-nav__list"]}>
-            <li className={styles["sns-nav__list-item"]}>
-              <Link
-                className={styles["sns-nav__list-item-link"]}
-                onNavigate={handleCloseSNSNav}
-                href={{
-                  pathname: "https://twitter.com/yourprofile",
-                }}
-              >
-                Twitter
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      )}
 
       {isOpenGlobalNav && (
         <nav className={styles["global-nav"]}>

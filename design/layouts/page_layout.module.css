@@ -1,32 +1,24 @@
 .header {
   width: 100%;
-  padding: 5px 10px;
+  padding: 12px 20px;
   position: absolute;
   color: #00ff62;
   z-index: 10;
   display: flex;
   justify-content: space-between;
 }
-
-.sns-nav__trigger {
-  cursor: pointer;
-  margin-right: 24px;
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.sns-nav {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-
-  background-color: rgba(0, 0, 0, 0.7);
+.social-link {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .global-nav__trigger {
   cursor: pointer;
 
