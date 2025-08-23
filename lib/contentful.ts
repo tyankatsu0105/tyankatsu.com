@@ -1,10 +1,13 @@
 import { Entry } from "contentful";
 export const Category = "category";
 export interface Category {
-  //Category
-  /* カテゴリ登録用 */
-  readonly slug?: string;
-  readonly title: string;
+  fields: {
+    //Category
+    /* カテゴリ登録用 */
+    readonly slug?: string;
+    readonly title: string;
+  };
+  contentTypeId: string;
 }
 
 type Image = {
@@ -31,8 +34,11 @@ export interface Posts {
 
 export const Tag = "tag";
 export interface Tag {
-  //Tag
-  /* タグ登録用 */
-  readonly slug: string;
-  readonly title: string;
+  fields: {
+    //Tag
+    /* タグ登録用 */
+    readonly slug: string;
+    readonly title: string;
+  };
+  contentTypeId: string;
 }
