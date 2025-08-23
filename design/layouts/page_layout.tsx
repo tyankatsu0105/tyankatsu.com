@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import "./globals.css";
 import styles from "./page_layout.module.css";
@@ -9,9 +9,14 @@ import Image from "next/image";
 
 const GlobalNav = () => {
   const [isOpenGlobalNav, setIsOpenGlobalNav] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState("");
+  const [shareText, setShareText] = useState("tyankatsu.com");
   const pathname = usePathname();
-  const currentUrl = `https://tyankatsu.com${pathname}`;
-  const shareText = "Check out this page!";
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+    setShareText(document.title || "tyankatsu.com");
+  }, [pathname]);
 
   const handleCloseNav = () => {
     setIsOpenGlobalNav(false);
