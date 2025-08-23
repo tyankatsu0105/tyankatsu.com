@@ -37,6 +37,20 @@ const GlobalNav = () => {
             data-hatena-bookmark-layout="touch"
           >
             <Image
+              src="/social-bluesky.svg"
+              alt="ブルースカイ"
+              width={20}
+              height={20}
+            />
+          </Link>
+          <Link
+            href="https://b.hatena.ne.jp/entry/"
+            className={styles["social-link"]}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-hatena-bookmark-layout="touch"
+          >
+            <Image
               src="/social-hatena.png"
               alt="はてなブックマーク"
               width={20}
