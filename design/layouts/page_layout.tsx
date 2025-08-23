@@ -4,29 +4,65 @@ import { useState } from "react";
 import "./globals.css";
 import styles from "./page_layout.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const GlobalNav = () => {
-  const [isOpenNav, setIsOpenNav] = useState(false);
+  const [isOpenGlobalNav, setIsOpenGlobalNav] = useState(false);
+  const [isOpenSNSNav, setIsOpenSNSNav] = useState(false);
   const handleCloseNav = () => {
-    setIsOpenNav(false);
+    setIsOpenGlobalNav(false);
   };
 
   const handleToggleNav = () => {
-    setIsOpenNav((prev) => !prev);
+    setIsOpenGlobalNav((prev) => !prev);
   };
+
+  const handleCloseSNSNav = () => {
+    setIsOpenSNSNav(false);
+  };
+
+  const handleToggleSNSNav = () => {
+    setIsOpenSNSNav((prev) => !prev);
+  };
+
   return (
     <>
       <header className={styles["header"]}>
         <button
           type="button"
+          className={styles["sns-nav__trigger"]}
+          onClick={handleToggleSNSNav}
+        >
+          <Image src="/sns.svg" alt="" width={25} height={25} />
+        </button>
+        <button
+          type="button"
           className={styles["global-nav__trigger"]}
           onClick={handleToggleNav}
         >
-          {isOpenNav ? "CLOSE" : "OPEN"} MENU
+          {isOpenGlobalNav ? "CLOSE" : "OPEN"} MENU
         </button>
       </header>
 
-      {isOpenNav && (
+      {isOpenSNSNav && (
+        <nav className={styles["sns-nav"]}>
+          <ul className={styles["sns-nav__list"]}>
+            <li className={styles["sns-nav__list-item"]}>
+              <Link
+                className={styles["sns-nav__list-item-link"]}
+                onNavigate={handleCloseSNSNav}
+                href={{
+                  pathname: "https://twitter.com/yourprofile",
+                }}
+              >
+                Twitter
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+
+      {isOpenGlobalNav && (
         <nav className={styles["global-nav"]}>
           <ul className={styles["global-nav__list"]}>
             <li className={styles["global-nav__list-item"]}>

@@ -5,8 +5,14 @@
   color: #00ff62;
   z-index: 10;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
+
+.sns-nav__trigger {
+  cursor: pointer;
+  margin-right: 24px;
+}
+
 .global-nav__trigger {
   cursor: pointer;
 
