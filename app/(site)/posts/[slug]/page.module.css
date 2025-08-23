@@ -84,6 +84,7 @@
     color: #00ff62;
     text-decoration: none;
     transition: all 0.2s ease;
+    text-decoration: underline;
   }
   a:hover {
     text-shadow: 0 0 5px #00ff62;

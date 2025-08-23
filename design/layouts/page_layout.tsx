@@ -27,7 +27,7 @@ const GlobalNav = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="/social-x.svg" alt="Twitter" width={25} height={25} />
+            <Image src="/social-x.svg" alt="Twitter" width={20} height={20} />
           </Link>
           <Link
             href="https://b.hatena.ne.jp/entry/"
@@ -39,8 +39,8 @@ const GlobalNav = () => {
             <Image
               src="/social-hatena.png"
               alt="はてなブックマーク"
-              width={25}
-              height={25}
+              width={20}
+              height={20}
             />
           </Link>
         </div>
